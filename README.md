@@ -14,7 +14,7 @@ The following subprojects/components are included. Some of them are not fully im
 
 ## NEMU
 
-NEMU(NJU Emulator) is a simple but complete full-system x86 emulator for teaching. It is the main part of this programming assignment. Small x86 programs can run under NEMU. The features of NEMU include
+NEMU(NJU Emulator) is a simple but complete full-system x86 emulator for teaching. It is the main part of this programming assignment. Small x86 programs can run under NEMU. The main features of NEMU include
 * a small monitor with a simple debugger
  * single step
  * register/memory examination
