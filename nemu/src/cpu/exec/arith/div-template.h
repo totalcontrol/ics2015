@@ -13,7 +13,7 @@ static void do_execute() {
 	REG(R_EAX) = a / b;
 	REG(R_EDX) = a % b;
 
-	print_asm(str(instr) str(SUFFIX) " %s", op_src->str);
+	print_asm_template1();
 }
 
 make_instr_helper(rm)

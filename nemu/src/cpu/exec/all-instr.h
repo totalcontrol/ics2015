@@ -15,7 +15,10 @@
 #include "logic/or.h"
 #include "logic/not.h"
 #include "logic/xor.h"
-#include "logic/shift.h"
+#include "logic/sar.h"
+#include "logic/shl.h"
+#include "logic/shr.h"
+#include "logic/shrd.h"
 
 #include "string/rep.h"
 

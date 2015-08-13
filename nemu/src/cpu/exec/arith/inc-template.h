@@ -9,7 +9,7 @@ static void do_execute () {
 	/* TODO: Update EFLAGS. */
 	panic("please implement me");
 
-	print_asm(str(instr) str(SUFFIX) " %s", op_src->str);
+	print_asm_template1();
 }
 
 make_instr_helper(rm)

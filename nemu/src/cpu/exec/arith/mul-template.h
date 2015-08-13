@@ -19,7 +19,7 @@ static void do_execute() {
 	 * in PA will test the flags updated by this instruction.
 	 */
 
-	print_asm(str(instr) str(SUFFIX) " %s", op_src->str);
+	print_asm_template1();
 }
 
 make_instr_helper(rm)

@@ -19,7 +19,7 @@ static void do_execute() {
 	 * in PA will test the flags updated by this instruction.
 	 */
 
-	print_asm(str(instr) str(SUFFIX) " %s, %s, %s", op_src->str, op_src2->str, op_dest->str);
+	print_asm_template3();
 }
 
 make_helper(concat(imul_rm2r_, SUFFIX)) {
@@ -51,7 +51,7 @@ make_helper(concat(imul_rm2a_, SUFFIX)) {
 	 * in PA will test the flags updated by this instruction.
 	 */
 
-	print_asm(str(instr) str(SUFFIX) " %s", op_src->str);
+	print_asm_template1();
 	return len + 1;
 }
 
