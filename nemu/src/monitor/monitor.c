@@ -44,6 +44,7 @@ void init_monitor(int argc, char *argv[]) {
 
 #ifdef USE_RAMDISK
 static void init_ramdisk() {
+	int ret;
 	const int ramdisk_max_size = 0xa0000;
 	FILE *fp = fopen(exec_file, "rb");
 	Assert(fp, "Can not open '%s'", exec_file);
@@ -53,12 +54,14 @@ static void init_ramdisk() {
 	Assert(file_size < ramdisk_max_size, "file size(%zd) too large", file_size);
 
 	fseek(fp, 0, SEEK_SET);
-	fread(hwa_to_va(0), file_size, 1, fp);
+	ret = fread(hwa_to_va(0), file_size, 1, fp);
+	assert(ret == 1);
 	fclose(fp);
 }
 #endif
 
 static void load_entry() {
+	int ret;
 	FILE *fp = fopen("entry", "rb");
 	Assert(fp, "Can not open 'entry'");
 
@@ -66,7 +69,8 @@ static void load_entry() {
 	size_t file_size = ftell(fp);
 
 	fseek(fp, 0, SEEK_SET);
-	fread(hwa_to_va(ENTRY_START), file_size, 1, fp);
+	ret = fread(hwa_to_va(ENTRY_START), file_size, 1, fp);
+	assert(ret == 1);
 	fclose(fp);
 }
 

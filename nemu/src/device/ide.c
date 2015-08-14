@@ -19,11 +19,13 @@ static FILE *disk_fp;
 
 void ide_io_handler(ioaddr_t addr, size_t len, bool is_write) {
 	assert(byte_cnt <= 512);
+	int ret;
 	if(is_write) {
 		if(addr - IDE_PORT == 0 && len == 4) {
 			/* write 4 bytes data to disk */
 			assert(ide_write);
-			fwrite(ide_port_base, 4, 1, disk_fp);
+			ret = fwrite(ide_port_base, 4, 1, disk_fp);
+			assert(ret == 1);
 
 			byte_cnt += 4;
 			if(byte_cnt == 512) {
@@ -44,7 +46,8 @@ void ide_io_handler(ioaddr_t addr, size_t len, bool is_write) {
 				if(ide_port_base[7] == 0x20) {
 					/* command: read from disk */
 					ide_write = false;
-					fread(ide_port_base, 4, 1, disk_fp);
+					ret = fread(ide_port_base, 4, 1, disk_fp);
+					assert(ret == 1);
 					ide_port_base[7] = 0x40;
 					i8259_raise_intr(IDE_IRQ);
 				}
@@ -69,7 +72,8 @@ void ide_io_handler(ioaddr_t addr, size_t len, bool is_write) {
 		if(addr - IDE_PORT == 0 && len == 4) {
 			/* read 4 bytes data from disk */
 			assert(!ide_write);
-			fread(ide_port_base, 4, 1, disk_fp);
+			ret = fread(ide_port_base, 4, 1, disk_fp);
+			assert(ret == 1);
 
 			byte_cnt += 4;
 			if(byte_cnt == 512) {
@@ -81,6 +85,7 @@ void ide_io_handler(ioaddr_t addr, size_t len, bool is_write) {
 }
 
 void bmr_io_handler(ioaddr_t addr, size_t len, bool is_write) {
+	int ret;
 	if(is_write) {
 		if(addr - BMR_PORT == 0) {
 			if(bmr_base[0] & 0x1) {
@@ -100,7 +105,8 @@ void bmr_io_handler(ioaddr_t addr, size_t len, bool is_write) {
 					disk_idx = sector << 9;
 					fseek(disk_fp, disk_idx, SEEK_SET);
 
-					fread((void *)hwa_to_va(addr), byte_cnt, 1, disk_fp);
+					ret = fread((void *)hwa_to_va(addr), byte_cnt, 1, disk_fp);
+					assert(ret == 1);
 
 					/* We only implement PRDT of single entry. */
 					assert(hi_entry & 0x80000000);

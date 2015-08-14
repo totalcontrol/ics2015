@@ -9,6 +9,7 @@ static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
 void load_elf_tables(int argc, char *argv[]) {
+	int ret;
 	Assert(argc == 2, "run NEMU with format 'nemu [program]'");
 	exec_file = argv[1];
 
@@ -18,7 +19,8 @@ void load_elf_tables(int argc, char *argv[]) {
 	uint8_t buf[4096];
 	/* Read the first 4096 bytes from the exec_file.
 	 * They should contain the ELF header and program headers. */
-	fread(buf, 4096, 1, fp);
+	ret = fread(buf, 4096, 1, fp);
+	assert(ret == 1);
 
 	/* The first several bytes contain the ELF header. */
 	Elf32_Ehdr *elf = (void *)buf;
@@ -43,12 +45,14 @@ void load_elf_tables(int argc, char *argv[]) {
 	uint32_t sh_size = elf->e_shentsize * elf->e_shnum;
 	Elf32_Shdr *sh = malloc(sh_size);
 	fseek(fp, elf->e_shoff, SEEK_SET);
-	fread(sh, sh_size, 1, fp);
+	ret = fread(sh, sh_size, 1, fp);
+	assert(ret == 1);
 
 	/* Load section header string table */
 	char *shstrtab = malloc(sh[elf->e_shstrndx].sh_size);
 	fseek(fp, sh[elf->e_shstrndx].sh_offset, SEEK_SET);
-	fread(shstrtab, sh[elf->e_shstrndx].sh_size, 1, fp);
+	ret = fread(shstrtab, sh[elf->e_shstrndx].sh_size, 1, fp);
+	assert(ret == 1);
 
 	int i;
 	for(i = 0; i < elf->e_shnum; i ++) {
@@ -57,7 +61,8 @@ void load_elf_tables(int argc, char *argv[]) {
 			/* Load symbol table from exec_file */
 			symtab = malloc(sh[i].sh_size);
 			fseek(fp, sh[i].sh_offset, SEEK_SET);
-			fread(symtab, sh[i].sh_size, 1, fp);
+			ret = fread(symtab, sh[i].sh_size, 1, fp);
+			assert(ret == 1);
 			nr_symtab_entry = sh[i].sh_size / sizeof(symtab[0]);
 		}
 		else if(sh[i].sh_type == SHT_STRTAB && 
@@ -65,7 +70,8 @@ void load_elf_tables(int argc, char *argv[]) {
 			/* Load string table from exec_file */
 			strtab = malloc(sh[i].sh_size);
 			fseek(fp, sh[i].sh_offset, SEEK_SET);
-			fread(strtab, sh[i].sh_size, 1, fp);
+			ret = fread(strtab, sh[i].sh_size, 1, fp);
+			assert(ret == 1);
 		}
 	}
 
