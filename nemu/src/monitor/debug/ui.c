@@ -36,6 +36,14 @@ static int cmd_c(char *args) {
 
 static int cmd_info(char *args) {
 	printf("EAX=%x %x %x %x\n",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
+	printf("ECX=%x %x %x %x\n",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
+	printf("EDX=%x %x %x %x\n",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
+	printf("EBX=%x %x %x %x\n",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
+	printf("ESP=%x %x %x %x\n",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
+	printf("EBP=%x %x %x %x\n",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
+	printf("ESI=%x %x %x %x\n",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
+	printf("EDI=%x %x %x %x\n",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
+
 	printf("EAX=%x\n",cpu.eax);
 	printf("ECX=%x\n",cpu.ecx);
 	printf("EDX=%x\n",cpu.edx);
