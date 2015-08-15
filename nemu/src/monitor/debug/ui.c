@@ -32,19 +32,32 @@ static int cmd_c(char *args) {
 	return 0;
 }
 
+static int cmd_step_n(char *args) {
+    int number;
+	if (args==NULL)
+		{
+		 printf("error si format [si n]\n");
+		 return 1;
+		 }
+	number=atoi(args);
+	printf("%x",number);
+	return 0;
+}
+
 
 
 static int cmd_info(char *args) {
     if (args==NULL)
 		{
-		 printf("error info format\n");
+		 printf("error info format [info r/info w]\n");
 		 return 1;
 		 }
 	 if (0!=strcmp(args,"r"))
 		 {
-		  printf("error info format\n");
+		  printf("error info format [info r/info w]\n");
 		  return 1;
 		  }
+	 
 	printf("EAX = [ %02X %02X %02X %02X ]   ",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
 	printf("EAX = %08X\n",cpu.eax);
 
@@ -87,7 +100,7 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
     { "m", "Memory Scan", cmd_q },
-	{ "s", "Step by Step", cmd_q },
+	{ "si", "Step by Step[si n]", cmd_step_n},
 	{ "q", "Exit NEMU", cmd_q },
 
 	/* TODO: Add more commands */
