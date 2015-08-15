@@ -44,14 +44,14 @@ static int cmd_info(char *args) {
 	printf("ESI = [%02X %02X %02X %02X]\n",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
 	printf("EDI = [%02X %02X %02X %02X]\n",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
 
-	printf("EAX=%8X\n",cpu.eax);
-	printf("ECX=%8X\n",cpu.ecx);
-	printf("EDX=%8X\n",cpu.edx);
-	printf("EBX=%8X\n",cpu.ebx);
-	printf("ESP=%8X\n",cpu.esp);
-	printf("EBP=%8X\n",cpu.ebp);
-	printf("ESI=%8X\n",cpu.esi);
-	printf("EDI=%8X\n",cpu.edi);
+	printf("EAX=%08X\n",cpu.eax);
+	printf("ECX=%08X\n",cpu.ecx);
+	printf("EDX=%08X\n",cpu.edx);
+	printf("EBX=%08X\n",cpu.ebx);
+	printf("ESP=%08X\n",cpu.esp);
+	printf("EBP=%08X\n",cpu.ebp);
+	printf("ESI=%08X\n",cpu.esi);
+	printf("EDI=%08X\n",cpu.edi);
 
 	return 0;
 }
