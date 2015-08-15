@@ -60,12 +60,12 @@ static int cmd_memory_info(char *args) {
 		 	{
 		 	  if (strcmp(p,"esp")==0)
 		 	  	{
-		 	  	 printf("esp[%08X]+%d [%08X] ,",cpu.esp,number,hwaddr_read(cpu.esp+number,4));
+		 	  	 printf("esp[%08X]+%d [%08X] ,",cpu.esp,number,hwaddr_read(va_to_hwa(cpu.esp+number),4));
 		 	  	}
 			  if (strcmp(p,"ebp")==0)
-		 	  	{printf("ebp[%08X]+%d [%08X] ,",cpu.ebp,number,hwaddr_read(cpu.ebp+number,4));}
+		 	  	{printf("ebp[%08X]+%d [%08X] ,",cpu.ebp,number,hwaddr_read(va_to_hwa(cpu.ebp+number),4));}
 			  if (strcmp(p,"eip")==0)
-		 	  	{printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,hwaddr_read(cpu.eip+number,4));}
+		 	  	{printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,hwaddr_read(va_to_hwa(cpu.eip+number),4));}
 			  
 
 		 	}
