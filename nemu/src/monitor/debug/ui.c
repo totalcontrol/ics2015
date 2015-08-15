@@ -35,6 +35,8 @@ static int cmd_c(char *args) {
 
 
 static int cmd_info(char *args) {
+	//if {0==strcmp(args,"r"))
+		printf("__%s___\n",args);
 	printf("EAX = [ %02X %02X %02X %02X ]   ",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
 	printf("EAX = %08X\n",cpu.eax);
 
@@ -58,7 +60,7 @@ static int cmd_info(char *args) {
 
 	printf("EDI = [ %02X %02X %02X %02X ]   ",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
 	printf("EDI = %08X\n",cpu.edi);
-
+		
 	return 0;
 }
 
@@ -75,7 +77,7 @@ static struct {
 } cmd_table [] = {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
-	{ "i", "info register/watch [Info r/ info w ]", cmd_info },
+	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
     { "m", "Memory Scan", cmd_q },
 	{ "s", "Step by Step", cmd_q },
 	{ "q", "Exit NEMU", cmd_q },
