@@ -40,7 +40,7 @@ static int cmd_step_n(char *args) {
 		 return 1;
 		 }
 	number=atoi(args);
-	printf("%x",number);
+	printf("%d",number);
 	return 0;
 }
 
