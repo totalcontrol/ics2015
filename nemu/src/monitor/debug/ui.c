@@ -41,6 +41,7 @@ static int cmd_step_n(char *args) {
 		 }
 	number=atoi(args);
 	printf("%d",number);
+	cpu_exec(number);
 	return 0;
 }
 
