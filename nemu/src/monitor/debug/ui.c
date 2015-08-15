@@ -58,6 +58,8 @@ static int cmd_memory_info(char *args) {
 		 p=strtok(NULL," ");
 		 if (p)
 		 	{
+		 	number=number+atoi(p);
+		 	/*
 		 	  if (strcmp(p,"esp")==0)
 		 	  	{
 		 	  	 printf("esp[%08X]+%d [%08X] ,",cpu.esp,number,swaddr_read(va_to_hwa(cpu.esp+number),4));
@@ -66,8 +68,8 @@ static int cmd_memory_info(char *args) {
 		 	  	{printf("ebp[%08X]+%d [%08X] ,",cpu.ebp,number,swaddr_read(2,4));}
 			  if (strcmp(p,"eip")==0)
 		 	  	{printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,swaddr_read(va_to_hwa(cpu.eip+number),4));}
-			  
-
+			  printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,swaddr_read(va_to_hwa(cpu.eip+number),4));}
+*/           printf("Mem[%d] [%08X] ,",number,swaddr_read(number,4));
 		 	}
 		}
 	
