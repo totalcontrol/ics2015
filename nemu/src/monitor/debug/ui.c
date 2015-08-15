@@ -45,14 +45,21 @@ static int cmd_step_n(char *args) {
 }
 
 static int cmd_memory_info(char *args) {
-    int number;
+    char *p;
+	//int number;
 	if (args==NULL)
 		{
-		 cpu_exec(1);
 		 return 1;
 		 }
-	number=atoi(args);
-	cpu_exec(number);
+	p=strtok(args," ");
+	if (p)
+		{
+		 printf("%s\n",p);
+		 p=strtok(NULL," ");
+		 if (p)
+		 	printf("%s\n",p);
+		}
+	
 	return 0;
 }
 
