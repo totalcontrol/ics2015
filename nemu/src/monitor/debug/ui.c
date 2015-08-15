@@ -37,8 +37,8 @@ static int cmd_c(char *args) {
 static int cmd_info(char *args) {
     if (args==NULL)
 		return 1;
-	 if (0==strcmp(args,"r"))
-		printf("__%s___\n",args);
+	 if (0!=strcmp(args,"r"))
+		return 1;
 	printf("EAX = [ %02X %02X %02X %02X ]   ",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
 	printf("EAX = %08X\n",cpu.eax);
 
