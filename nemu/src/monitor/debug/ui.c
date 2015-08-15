@@ -35,14 +35,14 @@ static int cmd_c(char *args) {
 
 
 static int cmd_info(char *args) {
-	printf("EAX = [%02x %02x %02x %02x]\n",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
-	printf("ECX = [%02x %02x %02x %02x]\n",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
-	printf("EDX = [%02x %02x %02x %02x]\n",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
-	printf("EBX = [%02x %02x %02x %02x]\n",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
-	printf("ESP = [%02x %02x %02x %02x]\n",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
-	printf("EBP = [%02x %02x %02x %02x]\n",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
-	printf("ESI = [%02x %02x %02x %02x]\n",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
-	printf("EDI = [%02x %02x %02x %02x]\n",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
+	printf("EAX = [%02X %02x %02x %02x]\n",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
+	printf("ECX = [%02X %02x %02x %02x]\n",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
+	printf("EDX = [%02X %02x %02x %02x]\n",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
+	printf("EBX = [%02X %02x %02x %02x]\n",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
+	printf("ESP = [%02X %02x %02x %02x]\n",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
+	printf("EBP = [%02X %02x %02x %02x]\n",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
+	printf("ESI = [%02X %02x %02x %02x]\n",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
+	printf("EDI = [%02X %02x %02x %02x]\n",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
 
 	printf("EAX=%x\n",cpu.eax);
 	printf("ECX=%x\n",cpu.ecx);
