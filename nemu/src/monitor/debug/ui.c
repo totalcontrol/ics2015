@@ -40,7 +40,7 @@ static int cmd_info(char *args) {
 	printf("EDX = [%2x %2x %2x %2x]\n",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
 	printf("EBX = [%2x %2x %2x %2x]\n",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
 	printf("ESP = [%2x %2x %2x %2x]\n",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
-	printf("EBP = [%2x %2x %2x %2x]",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
+	printf("EBP = [%2x %2x %2x %2x]\n",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
 	printf("ESI = [%2x %2x %2x %2x]\n",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
 	printf("EDI = [%2x %2x %2x %2x]\n",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
 
