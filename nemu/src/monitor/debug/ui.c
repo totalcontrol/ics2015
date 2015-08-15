@@ -34,7 +34,9 @@ static int cmd_c(char *args) {
 
 
 static int cmd_info(char *args) {
-	printf("EAX=%x %x %x %x",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
+	printf("EAX=%x %x %x %x\n",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
+	printf("EAX=%x\n",cpu.eax);
+
 	return 0;
 }
 
