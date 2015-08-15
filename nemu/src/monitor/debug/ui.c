@@ -36,15 +36,25 @@ static int cmd_step_n(char *args) {
     int number;
 	if (args==NULL)
 		{
-		 printf("error si format [si n]\n");
+		 cpu_exec(1);
 		 return 1;
 		 }
 	number=atoi(args);
-	printf("%d",number);
 	cpu_exec(number);
 	return 0;
 }
 
+static int cmd_memory_info(char *args) {
+    int number;
+	if (args==NULL)
+		{
+		 cpu_exec(1);
+		 return 1;
+		 }
+	number=atoi(args);
+	cpu_exec(number);
+	return 0;
+}
 
 
 static int cmd_info(char *args) {
@@ -100,7 +110,7 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
-    { "m", "Memory Scan", cmd_q },
+    { "x", "Memory Info[x n esp]", cmd_memory_info },
 	{ "si", "Step by Step[si n]", cmd_step_n},
 	{ "q", "Exit NEMU", cmd_q },
 
