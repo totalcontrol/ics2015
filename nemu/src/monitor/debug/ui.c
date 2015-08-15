@@ -33,9 +33,17 @@ static int cmd_c(char *args) {
 }
 
 
+
 static int cmd_info(char *args) {
 	printf("EAX=%x %x %x %x\n",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
 	printf("EAX=%x\n",cpu.eax);
+	printf("ECX=%x\n",cpu.ecx);
+	printf("EDX=%x\n",cpu.edx);
+	printf("EBX=%x\n",cpu.ebx);
+	printf("ESP=%x\n",cpu.esp);
+	printf("EBP=%x\n",cpu.ebp);
+	printf("ESI=%x\n",cpu.esi);
+	printf("EDI=%x\n",cpu.edi);
 
 	return 0;
 }
