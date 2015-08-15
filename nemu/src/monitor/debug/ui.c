@@ -35,22 +35,28 @@ static int cmd_c(char *args) {
 
 
 static int cmd_info(char *args) {
-	printf("EAX = [ %02X %02X %02X %02X ]\n",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
-	printf("ECX = [ %02X %02X %02X %02X ]\n",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
-	printf("EDX = [ %02X %02X %02X %02X ]\n",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
-	printf("EBX = [ %02X %02X %02X %02X ]\n",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
-	printf("ESP = [ %02X %02X %02X %02X ]\n",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
-	printf("EBP = [ %02X %02X %02X %02X ]\n",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
-	printf("ESI = [ %02X %02X %02X %02X ]\n",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
-	printf("EDI = [ %02X %02X %02X %02X ]\n",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
-
+	printf("EAX = [ %02X %02X %02X %02X ]   ",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
 	printf("EAX=%08X\n",cpu.eax);
+
+	printf("ECX = [ %02X %02X %02X %02X ]   ",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
 	printf("ECX=%08X\n",cpu.ecx);
+
+	printf("EDX = [ %02X %02X %02X %02X ]   ",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
 	printf("EDX=%08X\n",cpu.edx);
+
+	printf("EBX = [ %02X %02X %02X %02X ]   ",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
 	printf("EBX=%08X\n",cpu.ebx);
+
+	printf("ESP = [ %02X %02X %02X %02X ]   ",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
 	printf("ESP=%08X\n",cpu.esp);
+
+	printf("EBP = [ %02X %02X %02X %02X ]   ",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
 	printf("EBP=%08X\n",cpu.ebp);
+
+	printf("ESI = [ %02X %02X %02X %02X ]   ",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
 	printf("ESI=%08X\n",cpu.esi);
+
+	printf("EDI = [ %02X %02X %02X %02X ]   ",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
 	printf("EDI=%08X\n",cpu.edi);
 
 	return 0;
