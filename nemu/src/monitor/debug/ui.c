@@ -63,7 +63,7 @@ static int cmd_memory_info(char *args) {
 		 	  	 printf("esp[%08X]+%d [%08X] ,",cpu.esp,number,swaddr_read(va_to_hwa(cpu.esp+number),4));
 		 	  	}
 			  if (strcmp(p,"ebp")==0)
-		 	  	{printf("ebp[%08X]+%d [%08X] ,",cpu.ebp,number,swaddr_read(va_to_hwa(cpu.ebp+number),4));}
+		 	  	{printf("ebp[%08X]+%d [%08X] ,",cpu.ebp,number,swaddr_read(2,4));}
 			  if (strcmp(p,"eip")==0)
 		 	  	{printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,swaddr_read(va_to_hwa(cpu.eip+number),4));}
 			  
