@@ -45,6 +45,9 @@ static struct {
 } cmd_table [] = {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
+	{ "r", "Register Info Display", cmd_q },
+    { "m", "Memory Scan", cmd_q },
+	{ "s", "Step by Step", cmd_q },
 	{ "q", "Exit NEMU", cmd_q },
 
 	/* TODO: Add more commands */
