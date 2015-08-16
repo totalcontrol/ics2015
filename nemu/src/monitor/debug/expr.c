@@ -159,16 +159,14 @@ uint32_t expr(char *e, bool *success) {
 	
 
 	printf("expr111,token-nuber=%d",nr_token);
-	return result;
+	
 
 		if(!make_token(e)) {
-		panic("please implement me");
+	 	panic("please implement me");
 
 		*success = false;
 		return 0;
 	}
-	else 
-		panic("please implement me111");
 
     //printf("expr111,token-nuber=%d",nr_token);
 
