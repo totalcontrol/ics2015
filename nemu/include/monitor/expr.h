@@ -4,5 +4,5 @@
 #include "common.h"
 
 uint32_t expr(char *, bool *);
-
+int eval(int,int);
 #endif
