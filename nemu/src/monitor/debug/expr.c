@@ -70,7 +70,7 @@ static bool make_token(char *e) {
 	regmatch_t pmatch;
 	
 	nr_token = 0;
-    return true;
+    
 	while(e[position] != '\0') {
 		/* Try all rules one by one. */
 		for(i = 0; i < NR_REGEX; i ++) {
@@ -91,9 +91,9 @@ static bool make_token(char *e) {
 				position += substr_len;
 
 				//
-				switch(rules[i].token_type) {
-					default: ;//panic("please implement me");
-				}
+				//switch(rules[i].token_type) {
+				//	default: ;//panic("please implement me");
+		//		}
 
 				break;
 			}
