@@ -156,6 +156,7 @@ int eval(int p,int q)
 
 uint32_t expr(char *e, bool *success) {
 	int result=0;
+	panic("please implement me");
 
 	printf("expr111,token-nuber=%d",nr_token);
 
