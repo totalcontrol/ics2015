@@ -159,8 +159,9 @@ uint32_t expr(char *e, bool *success) {
 	
 
 	printf("expr111,token-nuber=%d",nr_token);
+	return result;
 
-	if(!make_token(e)) {
+		if(!make_token(e)) {
 		panic("please implement me");
 
 		*success = false;
@@ -169,14 +170,14 @@ uint32_t expr(char *e, bool *success) {
 	else 
 		panic("please implement me111");
 
-    printf("expr111,token-nuber=%d",nr_token);
+    //printf("expr111,token-nuber=%d",nr_token);
 
 	/* TODO: Insert codes to evaluate the expression. */
 
-     if (nr_token>0)
-     	{
-          result =  eval(0,nr_token-1); 
-     	}
+     //if (nr_token>0)
+     	//{
+          //result =  eval(0,nr_token-1); 
+    // 	}
 	//panic("please implement me");
 	return result;
 }
