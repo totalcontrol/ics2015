@@ -27,6 +27,8 @@ static struct rule {
     {"-", '-'},						  // sub
 	{"==", EQ},						// equal
     {"*", '*'},						// mul
+    {"(", '('},						// mul
+    {")", ')'},						// mul
     //{"==", EQ}						// equa
 };
 
