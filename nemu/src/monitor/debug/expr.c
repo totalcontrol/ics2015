@@ -24,7 +24,10 @@ static struct rule {
 
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
-	{"==", EQ}						// equal
+    {"-", '-'},						  // sub
+	{"==", EQ},						// equal
+    {"*", '*'},						// mul
+    //{"==", EQ}						// equa
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -34,6 +37,7 @@ static regex_t re[NR_REGEX];
 /* Rules are used for many times.
  * Therefore we compile them only once before any usage.
  */
+ 
 void init_regex() {
 	int i;
 	char error_msg[128];
@@ -71,15 +75,20 @@ static bool make_token(char *e) {
 				int substr_len = pmatch.rm_eo;
 
 				Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
-				position += substr_len;
+			
 
 				/* TODO: Now a new token is recognized with rules[i]. Add codes
 				 * to record the token in the array ``tokens''. For certain 
 				 * types of tokens, some extra actions should be performed.
 				 */
+                //add by tiger
+                strncpy(tokens[nr_token].str,e+position,substr_len);
+				tokens[nr_token++].type=rules[i].token_type;
+				position += substr_len;
 
+				//
 				switch(rules[i].token_type) {
-					default: panic("please implement me");
+					default: ;//panic("please implement me");
 				}
 
 				break;
@@ -101,8 +110,53 @@ uint32_t expr(char *e, bool *success) {
 		return 0;
 	}
 
+
+
 	/* TODO: Insert codes to evaluate the expression. */
+
+
+
+
 	panic("please implement me");
 	return 0;
 }
+
+int eval(int p,int q)
+{
+  int op,val1,val2;
+    if(p > q) {
+        panic("Bad expression");/* Bad expression */
+    }
+    else if(p == q) { 
+		return 0;//(atoi(tokens[p].str));
+        /* Single token.
+         * For now this token should be a number. 
+         * Return the value of the number.
+         */ 
+    }
+    //else if(check_parentheses(p, q) == true) {
+        /* The expression is surrounded by a matched pair of parentheses. 
+         * If that is the case, just throw away the parentheses.
+         */
+      //  return eval(p + 1, q - 1); 
+    //}
+    else {
+        op = 1;//the position of dominant operator in the token expression;
+        val1 = eval(p, op - 1);
+        val2 = eval(op + 1, q);
+
+        switch(tokens[op].type) {
+            case '+': return val1 + val2;
+            case '-': return val1 - val2;/* ... */
+            case '*': return val1 * val2;/* ... */
+            case '/': /* ... */
+            default: assert(0);
+        }
+    }
+}
+
+
+
+
+	
 
