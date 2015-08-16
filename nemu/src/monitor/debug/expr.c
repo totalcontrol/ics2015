@@ -143,7 +143,16 @@ int eval(int p,int q)
       //  return eval(p + 1, q - 1); 
     //}
     else {
-        op = 1;//the position of dominant operator in the token expression;
+        int i,j;op=p;
+		for (i=0;i<NR_REGEX;i++)
+		  for (j=p;j<p;j++)
+		  	if (rules[i].token_type==tokens[j].type)
+		  		{
+		  		  op=j;
+				  j=p+1;
+				  i=NR_REGEX;
+		  		}
+        //op = 1;//the position of dominant operator in the token expression;
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);
 
