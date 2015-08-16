@@ -157,6 +157,8 @@ int eval(int p,int q)
 uint32_t expr(char *e, bool *success) {
 	int result=0;
 
+	printf("expr111,token-nuber=%d",nr_token);
+
 	if(!make_token(e)) {
 		*success = false;
 		return 0;
