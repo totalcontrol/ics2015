@@ -86,8 +86,8 @@ static bool make_token(char *e) {
 				 * types of tokens, some extra actions should be performed.
 				 */
                 //add by tiger
-                strncpy(tokens[nr_token].str,e+position,substr_len);
-				tokens[nr_token++].type=rules[i].token_type;
+                //strncpy(tokens[nr_token].str,e+position,substr_len);
+				//tokens[nr_token++].type=rules[i].token_type;
 				position += substr_len;
 
 				//
@@ -162,7 +162,7 @@ uint32_t expr(char *e, bool *success) {
 	
 
 		if(!make_token(e)) {
-	 	panic("please implement me");
+	   	panic("please implement me");
 
 		*success = false;
 		return 0;
