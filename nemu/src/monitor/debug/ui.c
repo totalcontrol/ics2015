@@ -33,14 +33,16 @@ static int cmd_c(char *args) {
 }
 
 static int cmd_step_n(char *args) {
-    int number=0;bool bb;
+    int number=0;//bool bb;
 	if (args==NULL)
 		{
 		 cpu_exec(1);
 		 return 1;
 		 }
-    number = expr(args,&bb);
-	//number=atoi(args);
+    
+	//number = expr(args,&bb);
+	
+	number=atoi(args);
 	cpu_exec(number);
 	return 0;
 }
