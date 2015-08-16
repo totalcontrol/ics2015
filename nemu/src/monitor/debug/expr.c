@@ -156,14 +156,18 @@ int eval(int p,int q)
 
 uint32_t expr(char *e, bool *success) {
 	int result=0;
-	panic("please implement me");
+	
 
 	printf("expr111,token-nuber=%d",nr_token);
 
 	if(!make_token(e)) {
+		panic("please implement me");
+
 		*success = false;
 		return 0;
 	}
+	else 
+		panic("please implement me111");
 
     printf("expr111,token-nuber=%d",nr_token);
 
