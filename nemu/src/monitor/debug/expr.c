@@ -128,6 +128,8 @@ bool check_parentheses(int p,int q)
 			return false;
 			
 	}
+	if (pair_count!=0) return false;
+
 if (tokens[p].type=='(' && tokens[q].type==')')
 {
     if (check_parentheses(p+1,q-1)==true)
