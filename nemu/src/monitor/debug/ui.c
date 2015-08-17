@@ -88,6 +88,42 @@ int number=0;bool bb;
   return 0;
 
 }
+
+
+static int cmd_watch_exp(char *args) {
+	bool bb;
+	WP* tempWP;
+    if (args==NULL)
+		{
+		 printf("error info format [info r/info w]\n");
+		 return 1;
+		}	
+
+	tempWP=new_wp();
+	strcpy(tempWP->expr,args);        //record expression
+	tempWP->value=expr(args,&bb);  //compute expression
+    return 0;
+	
+}
+
+static int cmd_del_watch(char *args) {
+    if (args==NULL)
+		{
+		 printf("error info format [info r/info w]\n");
+		 return 1;
+		}	
+	int n;
+	n=atoi(args);
+	if (n>31){
+		printf("no such watch point, number is too big\n");
+		return 1;
+		}
+	
+    free_wp(n);
+    return 0;
+	
+}
+
 static int cmd_info(char *args) {
     if (args==NULL)
 		{
@@ -144,6 +180,9 @@ static struct {
     { "x", "Memory Info[x n esp]", cmd_memory_info },
 	{ "si", "Step by Step[si n]", cmd_step_n},
 	{ "p", "print expression value[p expr]", cmd_print_exp},
+	{ "w", "watch expression[w expr] ", cmd_watch_exp},
+	{ "d", "delete expression[d n] ", cmd_del_watch},
+
 	{ "q", "Exit NEMU", cmd_q },
 
 	/* TODO: Add more commands */

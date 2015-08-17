@@ -251,9 +251,6 @@ int eval(int p,int q)
 uint32_t expr(char *e, bool *success) {
 	int result=0;
 	
-
-	
-
 		if(!make_token(e)) {
 	   	  panic("please implement me");
 
