@@ -41,8 +41,8 @@ static int cmd_step_n(char *args) {
 		 }
     
 	number = expr(args,&bb);
-	printf("___%d___",number);
-	//number=atoi(args);
+	printf("___%d___\n",number);
+	number=atoi(args);
 	cpu_exec(number);
 	return 0;
 }
