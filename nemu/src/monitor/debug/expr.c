@@ -28,15 +28,15 @@ static struct rule {
 	{" +",	NOTYPE,NOTYPE},				// spaces
 	{"[0-9]+", DATA,DATA},					// plus
 	{"0x[0-9,a-f,A-F]+", DATA,DATA},		// plus
-	{"%eax)", EAX,REG}, 					// mul
-	{"%ebx)", EBX,REG},						// mul
-	{"%ecx)", ECX,REG},						// mul
-	{"%edx)", EDX,REG},						// mul
-	{"%esi)", ESI,REG},						// mul
-	{"%edi)", EDI,REG}, 					// mul
-	{"%ebp)", EBP,REG},						// mul
-	{"%esp)", ESP,REG},						// mul
-	{"%eip)", EIP,REG},						// mul
+	{"%eax", EAX,REG}, 					// mul
+	{"%ebx", EBX,REG},						// mul
+	{"%ecx", ECX,REG},						// mul
+	{"%edx", EDX,REG},						// mul
+	{"%esi", ESI,REG},						// mul
+	{"%edi", EDI,REG}, 					// mul
+	{"%ebp", EBP,REG},						// mul
+	{"%esp", ESP,REG},						// mul
+	{"%eip", EIP,REG},						// mul
     {"\\(", '(',BRACKET},						// mul
     {"\\)", ')',BRACKET},						// mul
 	
