@@ -112,12 +112,10 @@ static bool make_token(char *e) {
 
 	return true; 
 }
-
-bool check_parentheses(int p,int q)
+bool check_expr_pair(int p,int q)
 {
     int pair_count=0;int i;
-	//printf("p=%d,q=%d\n",p,q);
-    if (p>=q) return false;
+	if (p>q) return false;
 	for ( i=p;i<q;i++)
     {
 		if (tokens[i].type=='(')
@@ -128,11 +126,20 @@ bool check_parentheses(int p,int q)
 			return false;
 			
 	}
-	if (pair_count!=0) return false;
+	return true;
+
+}
+bool check_parentheses(int p,int q)
+{
+    
+	//printf("p=%d,q=%d\n",p,q);
+    if (p>q) return false;
+	if (check_expr_pair(p,q)==false) return false;
+	
 
 if (tokens[p].type=='(' && tokens[q].type==')')
 {
-    if (check_parentheses(p+1,q-1)==true)
+    if (check_expr_pair(p+1,q-1)==true)
 	 return true;
 }
 return false;
