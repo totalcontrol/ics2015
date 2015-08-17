@@ -169,7 +169,7 @@ int eval(int p,int q)
 		return 0;
     }
     else if(p == q) { 
-		//if (tokens[p].type1==DATA)
+		if (tokens[p].type1==DATA)
 		  return  atoi(tokens[p].str);
 		if (tokens[p].type1==REG)
 			{
@@ -184,9 +184,9 @@ int eval(int p,int q)
                    case ESP:return cpu.esp;
 				   case ESI:return cpu.esi;
 				   case EDI:return cpu.edi;
-				   default:assert(0);
+				   default:assert(0);return 1;
 			  }
-			
+	
 		}
 		 /* Single token.
          * For now this token should be a number. 
@@ -232,9 +232,11 @@ int eval(int p,int q)
             case '*': return val1 * val2;/* ... */
             case '/': /* ... */
             default: assert(0);
+			return 0;
         }
     }
-	
+assert(0);
+	return 2;
 }
 
 
