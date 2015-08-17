@@ -117,7 +117,7 @@ bool check_parentheses(int p,int q)
 {
     int pair_count=0;int i;
 	printf("p=%d,q=%d\n",p,q);
-    assert(p<q);
+    if (p<q) return false;
 	for ( i=p;i<q;i++)
     {
 		if (tokens[i].type=='(')
@@ -129,7 +129,10 @@ bool check_parentheses(int p,int q)
 			
 	}
 if (tokens[p].type=='(' && tokens[q].type==')')
-	return true;
+{
+    if (check_parentheses(p+1,q-1)==true)
+	 return true;
+}
 return false;
 }
 
