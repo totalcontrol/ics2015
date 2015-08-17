@@ -78,7 +78,7 @@ static bool make_token(char *e) {
 			if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
-				position += substr_len;
+				
                  
 				Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
 			
@@ -88,9 +88,9 @@ static bool make_token(char *e) {
 				 * types of tokens, some extra actions should be performed.
 				 */
                 //add by tiger
-                //strncpy(tokens[nr_token].str,e+position,substr_len);
-				//tokens[nr_token++].type=rules[i].token_type;
-				
+                strncpy(tokens[nr_token].str,e+position,substr_len);
+				tokens[nr_token++].type=rules[i].token_type;
+				position += substr_len;
 
 				//
 				//switch(rules[i].token_type) {
