@@ -173,6 +173,7 @@ int eval(int p,int q)
 		  return  atoi(tokens[p].str);
 		if (tokens[p].type1==REG)
 			{
+			  return cpu.eax;
               switch (tokens[p].type)
               	{
                    case EAX:return cpu.eax;
