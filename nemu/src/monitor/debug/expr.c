@@ -178,7 +178,7 @@ uint32_t expr(char *e, bool *success) {
 
      if (nr_token>0)
     {
-          result =  eval(0,nr_token-1); 
+          result =  eval(0,nr_token); 
     }
 	//panic("please implement me");
 	return result;
