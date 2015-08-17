@@ -80,6 +80,14 @@ static int cmd_memory_info(char *args) {
 }
 
 
+
+static int cmd_print_exp(char *args) {
+int number=0;bool bb;
+	number = expr(args,&bb);
+  printf("%s =%d",args,number);
+  return 0;
+
+}
 static int cmd_info(char *args) {
     if (args==NULL)
 		{
@@ -135,6 +143,7 @@ static struct {
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
     { "x", "Memory Info[x n esp]", cmd_memory_info },
 	{ "si", "Step by Step[si n]", cmd_step_n},
+	{ "p", "print expression value[p expr]", cmd_print_exp},
 	{ "q", "Exit NEMU", cmd_q },
 
 	/* TODO: Add more commands */
