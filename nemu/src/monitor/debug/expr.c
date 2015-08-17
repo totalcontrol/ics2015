@@ -186,7 +186,7 @@ int eval(int p,int q)
                    case ESP:return cpu.esp;
 				   case ESI:return cpu.esi;
 				   case EDI:return cpu.edi;
-				   default:assert(0);return 1;
+				   default:assert(0);;
 			  }
 	         
 		}
