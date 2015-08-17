@@ -135,7 +135,7 @@ int eval(int p,int q)
     //}
     else {
         int i,j;op=p;
-		for (i=0;i<NR_REGEX;i++)
+		for (i=2;i<NR_REGEX;i++)
 		  for (j=p;j<q;j++)
 		  	if (rules[i].token_type==tokens[j].type)
 		  		{
@@ -143,7 +143,7 @@ int eval(int p,int q)
 				  j=p+1;
 				  i=NR_REGEX;
 		  		}
-			assert(tokens[op].type=='+');
+			//assert(tokens[op].type=='+');
         //op = 1;//the position of dominant operator in the token expression;
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);
