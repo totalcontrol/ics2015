@@ -169,12 +169,12 @@ int eval(int p,int q)
 		return 0;
     }
     else if(p == q) { 
-		if (tokens[p].type1==DATA)
+		//if (tokens[p].type1==DATA)
 		  return  atoi(tokens[p].str);
 		if (tokens[p].type1==REG)
 			{
 			  return cpu.eax;
-              switch (tokens[p].type)
+              /*switch (tokens[p].type)
               	{
                    case EAX:return cpu.eax;
 				   case EBX:return cpu.ebx;
@@ -186,7 +186,7 @@ int eval(int p,int q)
 				   case ESI:return cpu.esi;
 				   case EDI:return cpu.edi;
 				   default:assert(0);return 1;
-			  }
+			  }*/
 	
 		}
 		 /* Single token.
