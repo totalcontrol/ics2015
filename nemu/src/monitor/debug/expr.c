@@ -136,7 +136,7 @@ int eval(int p,int q)
     else {
         int i,j;op=p;
 		for (i=2;i<NR_REGEX;i++)
-		  for (j=p;j<p;j++)
+		  for (j=p;j<q;j++)
 		  	if (rules[i].token_type==tokens[j].type)
 		  		{
 		  		  op=j;
