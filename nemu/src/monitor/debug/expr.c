@@ -158,15 +158,22 @@ int eval(int p,int q)
         return eval(p + 1, q - 1); 
     }
     else {
-        int i,j;op=p;
+        int i,j;int paircount=0;op=p;
 		for (i=4;i<NR_REGEX;i++)
 		  for (j=p;j<q;j++)
-		  	if (rules[i].token_type==tokens[j].type)
+		  	{
+			  if (rules[j].token_type=='(')
+			  	paircount++;
+			  if (rules[j].token_type==')')
+							  paircount--;
+
+		  	if (rules[i].token_type==tokens[j].type && paircount==0)
 		  		{
 		  		  op=j;
 				  j=p+1;
 				  i=NR_REGEX;
 		  		}
+		  	}
 			//assert(tokens[op].type=='+');
         //op = 1;//the position of dominant operator in the token expression;
         val1 = eval(p, op - 1);
