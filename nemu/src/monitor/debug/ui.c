@@ -84,7 +84,7 @@ static int cmd_memory_info(char *args) {
 static int cmd_print_exp(char *args) {
 int number=0;bool bb;
 	number = expr(args,&bb);
-  printf("%s =%d",args,number);
+  printf("___%s = %d____\n",args,number);
   return 0;
 
 }
