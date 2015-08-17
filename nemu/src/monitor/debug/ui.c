@@ -9,6 +9,9 @@
 
 void cpu_exec(uint32_t);
 
+
+
+
 /* We use the ``readline'' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -124,6 +127,22 @@ static int cmd_del_watch(char *args) {
 	
 }
 
+static int cmd_display_watch(char *args) {
+    
+	WP *UsedWP;
+	UsedWP=get_wp_head();
+	//WP* UnusedWP=free_;
+	while (UsedWP!=NULL)
+		{printf("#%d----%2d----%s",UsedWP->NO,UsedWP->used,UsedWP->expr);
+         UsedWP=UsedWP->next;
+	}
+	//while (UnusedWP!=NULL)
+		//{printf("#%d----%2d----%s",UnusedWP->NO,UnusedWP->used,UnusedWP->expr);
+         //UnusedWP=UnusedWP->next;
+//	}
+	return 0;
+}
+
 static int cmd_info(char *args) {
     if (args==NULL)
 		{
@@ -182,6 +201,9 @@ static struct {
 	{ "p", "print expression value[p expr]", cmd_print_exp},
 	{ "w", "watch expression[w expr] ", cmd_watch_exp},
 	{ "d", "delete expression[d n] ", cmd_del_watch},
+	{ "watch", "display watch info[watch] ", cmd_display_watch},
+
+	
 
 	{ "q", "Exit NEMU", cmd_q },
 
