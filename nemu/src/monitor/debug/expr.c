@@ -111,6 +111,12 @@ static bool make_token(char *e) {
 	return true; 
 }
 
+bool check_parentheses(int p,int q)
+{
+if (tokens[p].type=='(' && tokens[q].type==')')
+	return true;
+return false;
+}
 
 int eval(int p,int q)
 {
@@ -127,12 +133,12 @@ int eval(int p,int q)
          * Return the value of the number.
          */ 
     }
-    //else if(check_parentheses(p, q) == true) {
+    else if(check_parentheses(p, q) == true) {
         /* The expression is surrounded by a matched pair of parentheses. 
          * If that is the case, just throw away the parentheses.
          */
-      //  return eval(p + 1, q - 1); 
-    //}
+        return eval(p + 1, q - 1); 
+    }
     else {
         int i,j;op=p;
 		for (i=2;i<NR_REGEX;i++)
