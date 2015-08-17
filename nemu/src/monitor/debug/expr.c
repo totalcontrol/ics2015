@@ -9,7 +9,7 @@
 
 enum {
 	NOTYPE = 256, EQ,DATA,EAX,EBX,ECX,EDX,EBP,ESP,EIP,ESI,EDI,REG,COMPUTE,BRACKET,LEFT
-		,RIGHT
+		,RIGHT,HEX,DEC
 
 	/* TODO: Add more token types */
 
@@ -26,8 +26,8 @@ static struct rule {
 	 */
 
 	{" +",	NOTYPE,NOTYPE},				// spaces
-	{"0x[0-9,a-f,A-F]+", DATA,DATA},		// plus
-	{"[0-9]+", DATA,DATA},					// plus
+	{"0x[0-9,a-f,A-F]+", HEX,DATA},		// plus
+	{"[0-9]+", DEC,DATA},					// plus
 
 	{"%eax", EAX,REG}, 					// mul
 	{"%ebx", EBX,REG},						// mul
@@ -173,7 +173,11 @@ int eval(int p,int q)
     }
     else if(p == q) { 
 		if (tokens[p].type1==DATA)
-		  return  strtoul(tokens[p].str,NULL,10);
+			{ 
+			if (tokens[p].type==DEC)
+   		     return  strtoul(tokens[p].str,NULL,10);
+			else return  strtoul(tokens[p].str,NULL,16);
+			}
 		else if (tokens[p].type1==REG)
 			{
 			  switch (tokens[p].type)
