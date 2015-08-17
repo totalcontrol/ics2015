@@ -186,7 +186,7 @@ int eval(int p,int q)
 				   case EDI:return cpu.edi;
 				   default:assert(0);
 			  }
-			return 0;
+			
 		}
 		 /* Single token.
          * For now this token should be a number. 
