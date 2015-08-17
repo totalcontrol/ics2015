@@ -114,14 +114,14 @@ static bool make_token(char *e) {
 
 int eval(int p,int q)
 {
-  int op,val1,val2,value=0;
+  int op,val1,val2;
     if(p > q) {
         panic("Bad expression");/* Bad expression */
     }
     else if(p == q) { 
 		
-		op = atoi("22");//tokens[p].str);
-		return value;
+		return  atoi(tokens[p].str);
+		
         /* Single token.
          * For now this token should be a number. 
          * Return the value of the number.
