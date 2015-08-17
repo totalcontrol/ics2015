@@ -130,7 +130,7 @@ bool check_parentheses(int p,int q)
 	}
 if (tokens[p].type=='(' && tokens[q].type==')')
 {
-    if (check_parentheses(p+1,q-1)==true)
+    //if (check_parentheses(p+1,q-1)==true)
 	 return true;
 }
 return false;
