@@ -8,7 +8,8 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,DATA,EAX,EBX,ECX,EDX,EBP,ESP,EIP,ESI,EDI
+	NOTYPE = 256, EQ,DATA,EAX,EBX,ECX,EDX,EBP,ESP,EIP,ESI,EDI,REG,COMPUTE,BRACKET,LEFT
+		,RIGHT
 
 	/* TODO: Add more token types */
 
@@ -17,32 +18,33 @@ enum {
 static struct rule {
 	char *regex;
 	int token_type;
+	int type1;
 } rules[] = {
 
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
 
-	{" +",	NOTYPE},				// spaces
-	{"[0-9]+", DATA},					// plus
-	{"%eax)", EAX}, 					// mul
-	{"%ebx)", EBX},						// mul
-	{"%ecx)", ECX},						// mul
-	{"%edx)", EDX},						// mul
-	{"%esi)", ESI},						// mul
-	{"%edi)", EDI}, 					// mul
-	{"%ebp)", EBP},						// mul
-	{"%esp)", ESP},						// mul
-	{"%eip)", EIP},						// mul
+	{" +",	NOTYPE,NOTYPE},				// spaces
+	{"[0-9]+", DATA,DATA},					// plus
+	{"%eax)", EAX,REG}, 					// mul
+	{"%ebx)", EBX,REG},						// mul
+	{"%ecx)", ECX,REG},						// mul
+	{"%edx)", EDX,REG},						// mul
+	{"%esi)", ESI,REG},						// mul
+	{"%edi)", EDI,REG}, 					// mul
+	{"%ebp)", EBP,REG},						// mul
+	{"%esp)", ESP,REG},						// mul
+	{"%eip)", EIP,REG},						// mul
 		
 
-    {"\\(", '('},						// mul
-    {"\\)", ')'},						// mul
+    {"\\(", '(',BRACKET},						// mul
+    {"\\)", ')',BRACKET},						// mul
 	
-	{"\\+", '+'},					// plus
-  //  {"-", '-'},						  // sub
-	{"==", EQ},						// equal
-    {"\\*", '*'},						// mul
+	{"\\+", '+',COMPUTE},					// plus
+    {"-", '-',COMPUTE},						  // sub
+	{"==", EQ,COMPUTE},						// equal
+    {"\\*", '*',COMPUTE},						// mul
 
     //{"==", EQ}						// equa
 };
@@ -184,7 +186,9 @@ int eval(int p,int q)
     }
     else {
         int i,j;int paircount=0;op=p;
-		for (i=4;i<NR_REGEX;i++)
+		for (i=0;i<NR_REGEX;i++)
+		{
+		  if (rules[i].type1!=COMPUTE) continue;
 		  for (j=p;j<q;j++)
 		  	{
 			  if (tokens[j].type=='(')
@@ -192,7 +196,7 @@ int eval(int p,int q)
 			  if (tokens[j].type==')')
 			  	paircount--;
 
-		  	if (rules[i].token_type==tokens[j].type && paircount==0)
+		  	if (rules[i].token_type==tokens[j].type && paircount==0 )
 		  		{
 		  		  op=j;
 				  printf("___opcode=%d__%d\n",tokens[op].type,j);
@@ -200,6 +204,7 @@ int eval(int p,int q)
 				  i=NR_REGEX;
 		  		}
 		  	}
+		}
 			//assert(tokens[op].type=='+');
         //op = 1;//the position of dominant operator in the token expression;
         val1 = eval(p, op - 1);
