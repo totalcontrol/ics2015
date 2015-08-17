@@ -8,7 +8,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,DATA
+	NOTYPE = 256, EQ,DATA,EAX,EBX,ECX,EDX,EBP,ESP,EIP,ESI,EDI
 
 	/* TODO: Add more token types */
 
@@ -25,10 +25,20 @@ static struct rule {
 
 	{" +",	NOTYPE},				// spaces
 	{"[0-9]+", DATA},					// plus
+	{"%eax)", EAX}, 					// mul
+	{"%ebx)", EBX},						// mul
+	{"%ecx)", ECX},						// mul
+	{"%edx)", EDX},						// mul
+	{"%esi)", ESI},						// mul
+	{"%edi)", EDI}, 					// mul
+	{"%ebp)", EBP},						// mul
+	{"%esp)", ESP},						// mul
+	{"%eip)", EIP},						// mul
+		
 
     {"\\(", '('},						// mul
     {"\\)", ')'},						// mul
-
+	
 	{"\\+", '+'},					// plus
   //  {"-", '-'},						  // sub
 	{"==", EQ},						// equal
@@ -90,7 +100,7 @@ static bool make_token(char *e) {
 				 * types of tokens, some extra actions should be performed.
 				 */
                 //add by tiger
-                if  (e[position]!=' ')
+                if  (e[position]!=' ')  //delete space char
 				{strncpy(tokens[nr_token].str,e+position,substr_len);
 				 tokens[nr_token++].type=rules[i].token_type;
                 }
