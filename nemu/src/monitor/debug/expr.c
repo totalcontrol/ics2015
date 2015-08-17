@@ -173,7 +173,7 @@ int eval(int p,int q)
     }
     else if(p == q) { 
 		if (tokens[p].type1==DATA)
-		  return  strtoul(tokens[p].str,NULL,0);
+		  return  strtoul(tokens[p].str,NULL,10);
 		else if (tokens[p].type1==REG)
 			{
 			  switch (tokens[p].type)
