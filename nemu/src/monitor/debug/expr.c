@@ -167,7 +167,7 @@ int eval(int p,int q)
 			  if (rules[j].token_type==')')
 							  paircount--;
 
-		  	if (rules[i].token_type==tokens[j].type && paircount==0)
+		  	if (rules[i].token_type==tokens[j].type )//&& paircount==0)
 		  		{
 		  		  op=j;
 				  j=p+1;
