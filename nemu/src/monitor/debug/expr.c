@@ -175,7 +175,7 @@ int eval(int p,int q)
 		  	if (rules[i].token_type==tokens[j].type && paircount==0)
 		  		{
 		  		  op=j;
-				  printf("___opcode=%d\n__%d\n",tokens[op].type,j);
+				  printf("___opcode=%d__%d\n",tokens[op].type,j);
 				  j=p+1;
 				  i=NR_REGEX;
 		  		}
