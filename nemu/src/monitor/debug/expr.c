@@ -169,7 +169,7 @@ int eval(int p,int q)
 		return 0;
     }
     else if(p == q) { 
-		if (tokens[p].type1==DATA)
+		//if (tokens[p].type1==DATA)
 		  return  atoi(tokens[p].str);
 		if (tokens[p].type1==REG)
 			{
@@ -234,7 +234,7 @@ int eval(int p,int q)
             default: assert(0);
         }
     }
-	return 2;
+	
 }
 
 
