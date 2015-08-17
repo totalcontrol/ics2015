@@ -162,12 +162,12 @@ int eval(int p,int q)
 		for (i=4;i<NR_REGEX;i++)
 		  for (j=p;j<q;j++)
 		  	{
-			  if (rules[j].token_type=='(')
+			  if (tokens[j].type=='(')
 			  	paircount++;
-			  if (rules[j].token_type==')')
+			  if (tokens[j].type==')')
 							  paircount--;
 
-		  	if (rules[i].token_type==tokens[j].type )//&& paircount==0)
+		  	if (rules[i].token_type==tokens[j].type && paircount==0)
 		  		{
 		  		  op=j;
 				  j=p+1;
