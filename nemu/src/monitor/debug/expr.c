@@ -116,7 +116,7 @@ static bool make_token(char *e) {
 bool check_parentheses(int p,int q)
 {
     int pair_count=0;int i;
-	printf("p=%d,q=%d\n",p,q);
+	//printf("p=%d,q=%d\n",p,q);
     if (p<q) return false;
 	for ( i=p;i<q;i++)
     {
