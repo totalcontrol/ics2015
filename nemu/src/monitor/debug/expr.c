@@ -26,7 +26,7 @@ static struct rule {
 	 */
 
 	{" +",	NOTYPE,NOTYPE},				// spaces
-	{"0x[0-9]+", DATA,DATA},		// plus
+	{"0x[0-9,a-f,A-F]+", DATA,DATA},		// plus
 	{"[0-9]+", DATA,DATA},					// plus
 
 	{"%eax", EAX,REG}, 					// mul
@@ -173,7 +173,7 @@ int eval(int p,int q)
     }
     else if(p == q) { 
 		if (tokens[p].type1==DATA)
-		  return  atoi(tokens[p].str);
+		  return  strtoul(tokens[p].str,NULL,0);
 		else if (tokens[p].type1==REG)
 			{
 			  switch (tokens[p].type)
