@@ -138,7 +138,8 @@ int eval(int p,int q)
   int op,val1,val2;
     if(p > q) {
 		printf("p=%d,q=%d\n",p,q);
-        panic("Bad expression");/* Bad expression */
+        printf("Bad expression");/* Bad expression */
+		return 0;
     }
     else if(p == q) { 
 		
