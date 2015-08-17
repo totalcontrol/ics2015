@@ -23,7 +23,7 @@ static struct rule {
 	 */
 
 	{" +",	NOTYPE},				// spaces
-//	{"\\d+", DATA},					// plus
+	{"[0-9]+", DATA},					// plus
 
 	{"\\+", '+'},					// plus
   //  {"-", '-'},						  // sub
@@ -164,7 +164,7 @@ uint32_t expr(char *e, bool *success) {
 	
 
 		if(!make_token(e)) {
-	   	panic("please implement me");
+	   	  panic("please implement me");
 
 		*success = false;
 		return 0;
