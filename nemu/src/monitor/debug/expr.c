@@ -1,5 +1,6 @@
 #include "nemu.h"
 
+#include "stdlib.h"
 /* We use the POSIX regex functions to process regular expressions.
  * Type 'man regex' for more information about POSIX regex functions.
  */
@@ -119,7 +120,7 @@ int eval(int p,int q)
     }
     else if(p == q) { 
 		
-		op = 2;//atoi("22");//tokens[p].str);
+		op = atoi("22");//tokens[p].str);
 		return value;
         /* Single token.
          * For now this token should be a number. 
