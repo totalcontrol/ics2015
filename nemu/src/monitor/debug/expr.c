@@ -104,8 +104,11 @@ static bool make_token(char *e) {
                 //add by tiger
                 if  (e[position]!=' ')  //delete space char
 				{strncpy(tokens[nr_token].str,e+position,substr_len);
+				 tokens[nr_token].type1=rules[i].type1;
 				 tokens[nr_token++].type=rules[i].token_type;
-                }
+ 
+
+				}
 				position += substr_len;
 
 				//
@@ -169,7 +172,7 @@ int eval(int p,int q)
 		return 0;
     }
     else if(p == q) { 
-		//if (tokens[p].type1==DATA)
+		if (tokens[p].type1==DATA)
 		  return  atoi(tokens[p].str);
 		if (tokens[p].type1==REG)
 			{
