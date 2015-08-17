@@ -71,7 +71,6 @@ static bool make_token(char *e) {
 	int position = 0;
 	int i;
 	regmatch_t pmatch;
-	
 	nr_token = 0;
     
 	while(e[position] != '\0') {
@@ -91,8 +90,10 @@ static bool make_token(char *e) {
 				 * types of tokens, some extra actions should be performed.
 				 */
                 //add by tiger
-                strncpy(tokens[nr_token].str,e+position,substr_len);
-				tokens[nr_token++].type=rules[i].token_type;
+                if  (e[position]!=' ')
+				{strncpy(tokens[nr_token].str,e+position,substr_len);
+				 tokens[nr_token++].type=rules[i].token_type;
+                }
 				position += substr_len;
 
 				//
