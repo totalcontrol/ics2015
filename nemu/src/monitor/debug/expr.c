@@ -113,13 +113,13 @@ static bool make_token(char *e) {
 
 int eval(int p,int q)
 {
-  int op,val1,val2,value;
+  int op,val1,val2,value=0;
     if(p > q) {
         panic("Bad expression");/* Bad expression */
     }
     else if(p == q) { 
 		
-		value = 1;//atoi(tokens[p].str);
+		op = 2;//atoi("22");//tokens[p].str);
 		return value;
         /* Single token.
          * For now this token should be a number. 
