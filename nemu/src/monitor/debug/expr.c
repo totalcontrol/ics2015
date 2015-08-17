@@ -26,7 +26,7 @@ static struct rule {
 	 */
 
 	{" +",	NOTYPE,NOTYPE},				// spaces
-	{"0x[0-9,a-f,A-F]+", DATA,DATA},		// plus
+	{"0x[0-9]+", DATA,DATA},		// plus
 	{"[0-9]+", DATA,DATA},					// plus
 
 	{"%eax", EAX,REG}, 					// mul
