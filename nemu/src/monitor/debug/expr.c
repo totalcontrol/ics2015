@@ -143,6 +143,7 @@ int eval(int p,int q)
 				  j=p+1;
 				  i=NR_REGEX;
 		  		}
+			assert(tokens[op].type=='+');
         //op = 1;//the position of dominant operator in the token expression;
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);
