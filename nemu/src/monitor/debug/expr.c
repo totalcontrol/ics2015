@@ -106,7 +106,6 @@ static bool make_token(char *e) {
 				{strncpy(tokens[nr_token].str,e+position,substr_len);
 				 tokens[nr_token].type1=rules[i].type1;
 				 tokens[nr_token++].type=rules[i].token_type;
- 
 
 				}
 				position += substr_len;
@@ -174,10 +173,9 @@ int eval(int p,int q)
     else if(p == q) { 
 		if (tokens[p].type1==DATA)
 		  return  atoi(tokens[p].str);
-		if (tokens[p].type1==REG)
+		else if (tokens[p].type1==REG)
 			{
-			  return cpu.eax;
-              /*switch (tokens[p].type)
+			  switch (tokens[p].type)
               	{
                    case EAX:return cpu.eax;
 				   case EBX:return cpu.ebx;
@@ -189,9 +187,10 @@ int eval(int p,int q)
 				   case ESI:return cpu.esi;
 				   case EDI:return cpu.edi;
 				   default:assert(0);return 1;
-			  }*/
-	
+			  }
+	         
 		}
+		return 1;
 		 /* Single token.
          * For now this token should be a number. 
          * Return the value of the number.
@@ -239,8 +238,7 @@ int eval(int p,int q)
 			return 0;
         }
     }
-assert(0);
-	return 2;
+  
 }
 
 
