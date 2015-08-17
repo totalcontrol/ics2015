@@ -115,8 +115,19 @@ static bool make_token(char *e) {
 
 bool check_parentheses(int p,int q)
 {
+    int pair_count=0;int i;
 	printf("p=%d,q=%d\n",p,q);
-
+    assert(p<q);
+	for ( i=p;i<q;i++)
+    {
+		if (tokens[i].type=='(')
+			pair_count++;
+		if (tokens[i].type==')')
+            pair_count--;
+		if (pair_count<0)
+			return false;
+			
+	}
 if (tokens[p].type=='(' && tokens[q].type==')')
 	return true;
 return false;
