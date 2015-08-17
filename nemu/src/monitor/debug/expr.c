@@ -27,6 +27,7 @@ static struct rule {
 
 	{" +",	NOTYPE,NOTYPE},				// spaces
 	{"[0-9]+", DATA,DATA},					// plus
+	{"0x[0-9,a-f,A-F]+", DATA,DATA},		// plus
 	{"%eax)", EAX,REG}, 					// mul
 	{"%ebx)", EBX,REG},						// mul
 	{"%ecx)", ECX,REG},						// mul
@@ -36,8 +37,6 @@ static struct rule {
 	{"%ebp)", EBP,REG},						// mul
 	{"%esp)", ESP,REG},						// mul
 	{"%eip)", EIP,REG},						// mul
-		
-
     {"\\(", '(',BRACKET},						// mul
     {"\\)", ')',BRACKET},						// mul
 	
@@ -46,7 +45,7 @@ static struct rule {
 	{"==", EQ,COMPUTE},						// equal
     {"\\*", '*',COMPUTE},						// mul
 
-    //{"==", EQ}						// equa
+
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -73,6 +72,7 @@ void init_regex() {
 
 typedef struct token {
 	int type;
+	int type1;
 	char str[32];
 } Token;
 
@@ -169,10 +169,26 @@ int eval(int p,int q)
 		return 0;
     }
     else if(p == q) { 
-		
-		return  atoi(tokens[p].str);
-		
-        /* Single token.
+		if (tokens[p].type1==DATA)
+		  return  atoi(tokens[p].str);
+		if (tokens[p].type1==REG)
+			{
+              switch (tokens[p].type)
+              	{
+                   case EAX:return cpu.eax;
+				   case EBX:return cpu.ebx;
+                   case ECX:return cpu.ecx;
+				   case EDX:return cpu.edx;
+                   case EIP:return cpu.eip;
+				   case EBP:return cpu.ebp;
+                   case ESP:return cpu.esp;
+				   case ESI:return cpu.esi;
+				   case EDI:return cpu.edi;
+				   default:assert(0);
+			  }
+			return 0;
+		}
+		 /* Single token.
          * For now this token should be a number. 
          * Return the value of the number.
          */ 
@@ -218,6 +234,7 @@ int eval(int p,int q)
             default: assert(0);
         }
     }
+	return 0;
 }
 
 
