@@ -1,6 +1,10 @@
 #include "monitor/monitor.h"
 #include "cpu/helper.h"
 #include <setjmp.h>
+#include "monitor/watchpoint.h"
+#include "monitor/expr.h"
+
+
 
 /* The assembly code of instructions executed is only output to the screen
  * when the number of instructions executed is less than this value.
@@ -33,7 +37,25 @@ void do_int3() {
 	printf("\nHit breakpoint at eip = 0x%08x\n", cpu.eip);
 	nemu_state = STOP;
 }
+/*trace all the watch windows*/
+void trace_watch()
+{
+int newvalue;
+ WP *UsedWP;
+ UsedWP=get_wp_head();
+ bool bb;
 
+ while (UsedWP!=NULL)
+ 	{
+ 	 newvalue=expr(UsedWP->expr,&bb);
+	 if (newvalue!=UsedWP->value)
+	 	{
+	 	 UsedWP->value=newvalue;
+		 nemu_state = STOP;
+	 	}
+ 	 UsedWP=UsedWP->next;
+ 	}
+}
 /* Simulate how the CPU works. */
 void cpu_exec(volatile uint32_t n) {
 	if(nemu_state == END) {
@@ -60,7 +82,7 @@ void cpu_exec(volatile uint32_t n) {
 		/* Execute one instruction, including instruction fetch,
 		 * instruction decode, and the actual execution. */
 		int instr_len = exec(cpu.eip);
-
+     
 		cpu.eip += instr_len;
 
 #ifdef DEBUG
@@ -73,8 +95,9 @@ void cpu_exec(volatile uint32_t n) {
 #endif
 
 		/* TODO: check watchpoints here. */
+		trace_watch();
 
-
+       
 		if(nemu_state != RUNNING) { return; }
 	}
 
