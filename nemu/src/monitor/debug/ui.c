@@ -133,7 +133,7 @@ static int cmd_display_watch(char *args) {
 	UsedWP=get_wp_head();
 	//WP* UnusedWP=free_;
 	while (UsedWP!=NULL)
-		{printf("#%d----%2d----%s\n",UsedWP->NO,UsedWP->used,UsedWP->expr);
+		{printf("#%d----%2d----%s\n",UsedWP->NO,UsedWP->value,UsedWP->expr);
          UsedWP=UsedWP->next;
 	}
 	//while (UnusedWP!=NULL)
