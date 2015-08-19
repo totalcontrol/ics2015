@@ -9,7 +9,7 @@
 
 enum {
 	NOTYPE = 256, EQ,DATA,EAX,EBX,ECX,EDX,EBP,ESP,EIP,ESI,EDI,REG,COMPUTE,BRACKET,LEFT
-		,RIGHT,HEX,DEC
+		,RIGHT,HEX,DEC,NEQ
 
 	/* TODO: Add more token types */
 
@@ -44,6 +44,7 @@ static struct rule {
 	{"\\+", '+',COMPUTE},					// plus
     {"-", '-',COMPUTE},						  // sub
 	{"==", EQ,COMPUTE},						// equal
+	{"!=", NEQ,COMPUTE},						// equal
     {"\\*", '*',COMPUTE},						// mul
 
 
@@ -241,7 +242,10 @@ int eval(int p,int q)
             case '-': return val1 - val2;/* ... */
             case '*': return val1 * val2;/* ... */
             case EQ:  return val1==val2; /* ... */
-            default: assert(0);
+			case NEQ:  return val1!=val2; /* ... */
+						
+
+			default: assert(0);
 			return 0;
         }
     }
