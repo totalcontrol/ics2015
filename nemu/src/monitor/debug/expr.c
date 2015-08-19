@@ -251,7 +251,7 @@ int eval(int p,int q)
 
 uint32_t expr(char *e, bool *success) {
 	int result=0;
-	printf("_____expression=%s_____\n",e);
+	printf("_____expression=%s_____=",e);
 	if(!make_token(e)) {
 	    printf("error expression,please implement me\n");//changed, old code is panic which make segment error.
 
@@ -267,6 +267,7 @@ uint32_t expr(char *e, bool *success) {
           result =  eval(0,nr_token-1); 
     }
 	//panic("please implement me");
+	printf("%d",result);
 	return result;
 }
 
