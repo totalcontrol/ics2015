@@ -252,7 +252,7 @@ int eval(int p,int q)
 
 uint32_t expr(char *e, bool *success) {
 	int result=0;
-	printf("_____expression=%s_____=",e);
+	//printf("_____expression=%s_____=",e);
 	if(!make_token(e)) {
 	    printf("error expression,please implement me\n");//changed, old code is panic which make segment error.
 
