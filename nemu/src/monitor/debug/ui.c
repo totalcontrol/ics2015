@@ -50,7 +50,8 @@ static int cmd_exec_n(char *args) {
 	return 0;
 }
 
-static int cmd_memory_info(char *args) {
+//display memory info 
+static int cmd_display_mem(char *args) {
     char *p;
 	int number;
 	if (args==NULL)
@@ -127,59 +128,54 @@ static int cmd_del_watch(char *args) {
 	
 }
 
-static int cmd_display_watch(char *args) {
-    
-	WP *UsedWP;
-	UsedWP=get_wp_head();
-	//WP* UnusedWP=free_;
-	while (UsedWP!=NULL)
-		{printf("#%d----%2d----%s\n",UsedWP->NO,UsedWP->value,UsedWP->expr);
-         UsedWP=UsedWP->next;
-	}
-	//while (UnusedWP!=NULL)
-		//{printf("#%d----%2d----%s",UnusedWP->NO,UnusedWP->used,UnusedWP->expr);
-         //UnusedWP=UnusedWP->next;
-//	}
-	return 0;
-}
 
 static int cmd_info(char *args) {
+
+	WP *UsedWP;
+	
     if (args==NULL)
 		{
 		 printf("error info format [info r/info w]\n");
 		 return 1;
 		 }
-	 if (0!=strcmp(args,"r"))
+	 if (0==strcmp(args,"r"))
 		 {
-		  printf("error info format [info r/info w]\n");
-		  return 1;
-		  }
+		  	printf("EAX = [ %02X %02X %02X %02X ]   ",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
+			printf("EAX = %08X\n",cpu.eax);
+
+			printf("ECX = [ %02X %02X %02X %02X ]   ",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
+			printf("ECX = %08X\n",cpu.ecx);
+
+			printf("EDX = [ %02X %02X %02X %02X ]   ",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
+			printf("EDX = %08X\n",cpu.edx);
+
+			printf("EBX = [ %02X %02X %02X %02X ]   ",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
+			printf("EBX = %08X\n",cpu.ebx);
+
+			printf("ESP = [ %02X %02X %02X %02X ]   ",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
+			printf("ESP = %08X\n",cpu.esp);
+
+			printf("EBP = [ %02X %02X %02X %02X ]   ",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
+			printf("EBP = %08X\n",cpu.ebp);
+
+			printf("ESI = [ %02X %02X %02X %02X ]   ",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
+			printf("ESI = %08X\n",cpu.esi);
+
+			printf("EDI = [ %02X %02X %02X %02X ]   ",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
+			printf("EDI = %08X\n",cpu.edi);
+		    return 1;
+		 }
 	 
-	printf("EAX = [ %02X %02X %02X %02X ]   ",cpu.gpr[0]._byte[3],cpu.gpr[0]._byte[2],cpu.gpr[0]._byte[1],cpu.gpr[0]._byte[0]);
-	printf("EAX = %08X\n",cpu.eax);
-
-	printf("ECX = [ %02X %02X %02X %02X ]   ",cpu.gpr[1]._byte[3],cpu.gpr[1]._byte[2],cpu.gpr[1]._byte[1],cpu.gpr[1]._byte[0]);
-	printf("ECX = %08X\n",cpu.ecx);
-
-	printf("EDX = [ %02X %02X %02X %02X ]   ",cpu.gpr[2]._byte[3],cpu.gpr[2]._byte[2],cpu.gpr[2]._byte[1],cpu.gpr[2]._byte[0]);
-	printf("EDX = %08X\n",cpu.edx);
-
-	printf("EBX = [ %02X %02X %02X %02X ]   ",cpu.gpr[3]._byte[3],cpu.gpr[3]._byte[2],cpu.gpr[3]._byte[1],cpu.gpr[3]._byte[0]);
-	printf("EBX = %08X\n",cpu.ebx);
-
-	printf("ESP = [ %02X %02X %02X %02X ]   ",cpu.gpr[4]._byte[3],cpu.gpr[4]._byte[2],cpu.gpr[4]._byte[1],cpu.gpr[4]._byte[0]);
-	printf("ESP = %08X\n",cpu.esp);
-
-	printf("EBP = [ %02X %02X %02X %02X ]   ",cpu.gpr[5]._byte[3],cpu.gpr[5]._byte[2],cpu.gpr[5]._byte[1],cpu.gpr[5]._byte[0]);
-	printf("EBP = %08X\n",cpu.ebp);
-
-	printf("ESI = [ %02X %02X %02X %02X ]   ",cpu.gpr[6]._byte[3],cpu.gpr[6]._byte[2],cpu.gpr[6]._byte[1],cpu.gpr[6]._byte[0]);
-	printf("ESI = %08X\n",cpu.esi);
-
-	printf("EDI = [ %02X %02X %02X %02X ]   ",cpu.gpr[7]._byte[3],cpu.gpr[7]._byte[2],cpu.gpr[7]._byte[1],cpu.gpr[7]._byte[0]);
-	printf("EDI = %08X\n",cpu.edi);
-		
-	return 0;
+	 else if (0==strcmp(args,"w"))
+		 {
+			UsedWP=get_wp_head();
+			while (UsedWP!=NULL)
+				{printf("#%d----%2d----%s\n",UsedWP->NO,UsedWP->value,UsedWP->expr);
+		         UsedWP=UsedWP->next;
+			}
+			return 0;
+          }
+	 return 0;
 }
 
 static int cmd_q(char *args) {
@@ -196,15 +192,11 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
-    { "x", "Memory Info[x n esp]", cmd_memory_info },
-	{ "si", "Step by Step[si n]", cmd_exec_n},
+    { "x", "Memory Info[x n esp]", cmd_display_mem },
+	{ "s", "Step by Step[s n]", cmd_exec_n},
 	{ "p", "print expression value[p expr]", cmd_print_exp},
 	{ "w", "watch expression[w expr] ", cmd_watch_exp},
 	{ "d", "delete expression[d n] ", cmd_del_watch},
-	{ "watch", "display watch info[watch] ", cmd_display_watch},
-
-	
-
 	{ "q", "Exit NEMU", cmd_q },
 
 	/* TODO: Add more commands */
