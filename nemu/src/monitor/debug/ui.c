@@ -35,17 +35,17 @@ static int cmd_c(char *args) {
 	return 0;
 }
 
-static int cmd_step_n(char *args) {
-    int number=0;bool bb=true;
-	if (args==NULL)
-		{
-		 cpu_exec(1);
-		 return 1;
-		 }
+//exec n instruction
+static int cmd_exec_n(char *args) {
+    int number=0;
+	
+	if (NULL==args)
+	{
+		cpu_exec(1);
+		return 1;
+	}
     
-	number = expr(args,&bb);
-	printf("expr====___%d___\n",number);
-	//number=atoi(args);
+	number=atoi(args);
 	cpu_exec(number);
 	return 0;
 }
@@ -197,7 +197,7 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
     { "x", "Memory Info[x n esp]", cmd_memory_info },
-	{ "si", "Step by Step[si n]", cmd_step_n},
+	{ "si", "Step by Step[si n]", cmd_exec_n},
 	{ "p", "print expression value[p expr]", cmd_print_exp},
 	{ "w", "watch expression[w expr] ", cmd_watch_exp},
 	{ "d", "delete expression[d n] ", cmd_del_watch},
