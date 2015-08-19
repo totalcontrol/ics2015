@@ -103,11 +103,13 @@ static int cmd_watch_exp(char *args) {
 		 return 1;
 		}	
     value=expr(args,&bb);
+	tempWP=new_wp();
+		strcpy(tempWP->expr,args);		  //record expression
+		tempWP->value=value;	 
+	
+
 	if (bb)
 		{
-	     tempWP=new_wp();
-	     strcpy(tempWP->expr,args);        //record expression
-         tempWP->value=value;     
 	}
 	
     return 0;
