@@ -95,17 +95,21 @@ static int cmd_print_exp(char *args) {
 
 
 static int cmd_watch_exp(char *args) {
-	bool bb;
+	bool bb; uint32_t value;
 	WP* tempWP;
     if (args==NULL)
 		{
 		 printf("error info format [info r/info w]\n");
 		 return 1;
 		}	
-
-	tempWP=new_wp();
-	strcpy(tempWP->expr,args);        //record expression
-	tempWP->value=expr(args,&bb);  //compute expression
+    value=expr(args,&bb);
+	if (bb)
+		{
+	     tempWP=new_wp();
+	     strcpy(tempWP->expr,args);        //record expression
+         tempWP->value=value;     
+	}
+	
     return 0;
 	
 }
