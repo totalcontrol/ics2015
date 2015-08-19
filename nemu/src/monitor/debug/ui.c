@@ -70,7 +70,7 @@ static int cmd_print_mem(char *args) {
 			 for(i=0;i<number;i++)
 			 	{
 			 	
-		 	     printf("        Mem[%d]: [%08X]\n",value+i,swaddr_read(value+i,4));
+		 	     printf("        Mem[%08X]: [%08X]\n",value+i,swaddr_read(value+i,4));
 			 	}
 			 }
 		}
