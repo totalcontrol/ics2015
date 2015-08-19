@@ -54,7 +54,7 @@ static int cmd_exec_n(char *args) {
 void mem_init()
 {
 uint32_t i;
-for (i=0;i<100;i++)
+for (i=0;i<64;i++)
 	swaddr_write(i,1,i);
 	
 }
@@ -74,10 +74,10 @@ static int cmd_print_mem(char *args) {
 		 	{
 		 	 value=expr(p,&bb);
 		     //printf("exp=%d,n=%d\n",value,number);
-			 for(i=0;i<number;i++)
+			 for(i=0;i<number;i=i+4)
 			 	{
 			 	
-		 	     printf("        Mem[%08X]: [%08X]\n",value+i,swaddr_read(value+i,1));
+		 	     printf("        Mem[%08X]: [%08X]\n",value+i*4,swaddr_read(value+i*4,4));
 			 	}
 			 }
 		}
