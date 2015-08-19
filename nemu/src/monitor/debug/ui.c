@@ -72,7 +72,7 @@ static int cmd_print_mem(char *args) {
 		 p=strtok(NULL," ");
 		 if (p)
 		 	{
-		 	 printf("expression=%s",p);
+		 	 printf("expression=%s\n",p);
 		 	 value=expr(p,&bb);value=(value/4)*4;
 		     printf("=%d,n=%d\n",value,number);
 			 for(i=0;i<number;i=i+1)
