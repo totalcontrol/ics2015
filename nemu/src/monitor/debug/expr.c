@@ -105,6 +105,7 @@ static bool make_token(char *e) {
                 //add by tiger
                 if  (e[position]!=' ')  //delete space char
 				{strncpy(tokens[nr_token].str,e+position,substr_len);
+				 tokens[nr_token].str[substr_len+1]='\0';  //very important,otherwise old data may result in expression
 				 tokens[nr_token].type1=rules[i].type1;
 				 tokens[nr_token++].type=rules[i].token_type;
 
