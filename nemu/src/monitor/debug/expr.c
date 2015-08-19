@@ -176,7 +176,7 @@ int eval(int p,int q)
 		if (tokens[p].type1==DATA)
 			{ 
 			if (tokens[p].type==DEC)
-   		     return  strtoul(tokens[p].str,NULL,10);
+   		     return  atoi(tokens[p].str);
 			else return  strtoul(tokens[p].str,NULL,16);
 			}
 		else if (tokens[p].type1==REG)
