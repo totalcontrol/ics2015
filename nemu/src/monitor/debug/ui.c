@@ -51,9 +51,9 @@ static int cmd_exec_n(char *args) {
 }
 
 //display memory info 
-static int cmd_display_mem(char *args) {
-    char *p;
-	int number;
+static int cmd_print_mem(char *args) {
+    char *p; uint32_t i,value;
+	int number=0;bool bb;
 	if (args==NULL)
 		{
 		 return 1;
@@ -65,19 +65,14 @@ static int cmd_display_mem(char *args) {
 		 p=strtok(NULL," ");
 		 if (p)
 		 	{
-		 	number=number+atoi(p);
-		 	/*
-		 	  if (strcmp(p,"esp")==0)
-		 	  	{
-		 	  	 printf("esp[%08X]+%d [%08X] ,",cpu.esp,number,swaddr_read(va_to_hwa(cpu.esp+number),4));
-		 	  	}
-			  if (strcmp(p,"ebp")==0)
-		 	  	{printf("ebp[%08X]+%d [%08X] ,",cpu.ebp,number,swaddr_read(2,4));}
-			  if (strcmp(p,"eip")==0)
-		 	  	{printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,swaddr_read(va_to_hwa(cpu.eip+number),4));}
-			  printf("eip[%08X]+%d [%08X] ,",cpu.eip,number,swaddr_read(va_to_hwa(cpu.eip+number),4));}
-*/           printf("Mem[%d] [%08X] ,",number,swaddr_read(number,4));
-		 	}
+		 	 value=expr(p,&bb);
+		
+			 for(i=0;i<number;i++)
+			 	{
+			 	
+		 	     printf("        Mem[%d]: [%08X]\n",number,swaddr_read(value+i,4));
+			 	}
+			 }
 		}
 	
 	return 0;
@@ -192,7 +187,7 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
-    { "x", "Memory Info[x n expr]", cmd_display_mem },
+    { "x", "Memory Info[x n expr]", cmd_print_mem },
 	{ "si", "Step by Step[si n]", cmd_exec_n},
 	{ "p", "print expression value[p expr]", cmd_print_exp},
 	{ "w", "watch expression[w expr] ", cmd_watch_exp},

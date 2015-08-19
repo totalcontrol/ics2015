@@ -128,6 +128,8 @@ static bool make_token(char *e) {
 
 	return true; 
 }
+
+/*check bracket's count*/
 bool check_expr_pair(int p,int q)
 {
     int pair_count=0;int i;
@@ -167,7 +169,7 @@ int eval(int p,int q)
   //printf("p=%d,q=%d\n",p,q);
 	
 	if(p > q) {
-		printf("Bad expression");/* Bad expression */
+		printf("Bad expression\n");/* Bad expression */
 		return 0;
     }
     else if(p == q) { 
@@ -249,12 +251,8 @@ int eval(int p,int q)
 
 uint32_t expr(char *e, bool *success) {
 	int result=0;
-	
-
-	
-
-		if(!make_token(e)) {
-	   	  Log("please implement me");
+	if(!make_token(e)) {
+	    printf("error expression,please implement me\n");//changed, old code is panic which make segment error.
 
 		*success = false;
 		return 0;
