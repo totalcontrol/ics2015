@@ -170,7 +170,7 @@ static int cmd_info(char *args) {
 		 {
 			UsedWP=get_wp_head();
 			while (UsedWP!=NULL)
-				{printf("        #%d----%8X----%s\n",UsedWP->NO,UsedWP->value,UsedWP->expr);
+				{printf("        #%d----%08X----%s\n",UsedWP->NO,UsedWP->value,UsedWP->expr);
 		         UsedWP=UsedWP->next;
 			}
 			return 0;
