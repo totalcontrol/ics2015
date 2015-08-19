@@ -193,7 +193,7 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "info", "info register/watch [Info r/ info w ]", cmd_info },
     { "x", "Memory Info[x n esp]", cmd_display_mem },
-	{ "s", "Step by Step[s n]", cmd_exec_n},
+	{ "si", "Step by Step[s n]", cmd_exec_n},
 	{ "p", "print expression value[p expr]", cmd_print_exp},
 	{ "w", "watch expression[w expr] ", cmd_watch_exp},
 	{ "d", "delete expression[d n] ", cmd_del_watch},
