@@ -268,7 +268,6 @@ uint32_t expr(char *e, bool *success) {
           result =  eval(0,nr_token-1); 
     }
 	//panic("please implement me");
-	printf("%d",result);
 	return result;
 }
 
