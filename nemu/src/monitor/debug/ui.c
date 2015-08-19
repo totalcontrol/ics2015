@@ -55,7 +55,7 @@ void mem_init()
 {
 uint32_t i;
 for (i=0;i<100;i++)
-	swaddr_write(i,4,i);
+	swaddr_write(i,1,i);
 	
 }
 static int cmd_print_mem(char *args) {
