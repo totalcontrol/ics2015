@@ -50,7 +50,14 @@ static int cmd_exec_n(char *args) {
 	return 0;
 }
 
-//display memory info 
+//display memory info
+void mem_init()
+{
+uint32_t i;
+for (i=0;i<100;i++)
+	swaddr_read(i,i);
+	
+}
 static int cmd_print_mem(char *args) {
     char *p; uint32_t i,value,number;
 	bool bb;
@@ -66,7 +73,7 @@ static int cmd_print_mem(char *args) {
 		 if (p)
 		 	{
 		 	 value=expr(p,&bb);
-		     printf("exp=%d,n=%d\n",value,number);
+		     //printf("exp=%d,n=%d\n",value,number);
 			 for(i=0;i<number;i++)
 			 	{
 			 	
@@ -204,7 +211,7 @@ static int cmd_help(char *args) {
 	/* extract the first argument */
 	char *arg = strtok(NULL, " ");
 	int i;
-
+    mem_init();
 	if(arg == NULL) {
 		/* no argument given */
 		for(i = 0; i < NR_CMD; i ++) {
