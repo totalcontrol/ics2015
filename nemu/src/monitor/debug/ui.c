@@ -72,8 +72,9 @@ static int cmd_print_mem(char *args) {
 		 p=strtok(NULL," ");
 		 if (p)
 		 	{
+		 	 printf("%s",p);
 		 	 value=expr(p,&bb);value=(value/4)*4;
-		     printf("exp=%d,n=%d\n",value,number);
+		     printf("=%d,n=%d\n",value,number);
 			 for(i=0;i<number;i=i+1)
 			 	{
 			 	
