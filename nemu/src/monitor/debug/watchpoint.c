@@ -32,7 +32,7 @@ return head;
 //insert int0 tail of used list
 WP* new_wp()
 {
-  WP* templink,*tail;
+  WP* templink,*tail,*newwp;
   tail=head;
   if (tail)
     {while(tail->next!=NULL) 
@@ -41,6 +41,7 @@ WP* new_wp()
     }
   if (free_!=NULL)
   {
+    newwp=free_;
     templink=free_->next;
 	free_->next=NULL;
 	free_->used=1;
@@ -48,7 +49,7 @@ WP* new_wp()
 	 tail->next=free_;
 	else head=free_;
 	free_=templink;
-	return tail->next;
+	return newwp;
   }
   assert(0);
   return NULL;
