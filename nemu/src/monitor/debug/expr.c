@@ -254,7 +254,7 @@ uint32_t expr(char *e, bool *success) {
 	
 
 		if(!make_token(e)) {
-	   	  panic("please implement me");
+	   	  Log("please implement me");
 
 		*success = false;
 		return 0;
