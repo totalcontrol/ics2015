@@ -52,8 +52,8 @@ static int cmd_exec_n(char *args) {
 
 //display memory info 
 static int cmd_print_mem(char *args) {
-    char *p; uint32_t i,value;
-	int number=0;bool bb;
+    char *p; uint32_t i,value,number;
+	bool bb;
 	if (args==NULL)
 		{
 		 return 1;
