@@ -74,10 +74,10 @@ static int cmd_print_mem(char *args) {
 		 	{
 		 	 value=expr(p,&bb);value=(value/4)*4;
 		     //printf("exp=%d,n=%d\n",value,number);
-			 for(i=0;i<number;i=i+4)
+			 for(i=0;i<number;i=i+1)
 			 	{
 			 	
-		 	     printf("        Mem[%08X]: [%08X]\n",value+i,swaddr_read(value+i,4));
+		 	     printf("        Mem[%08X]: [%08X]\n",value+4*i,swaddr_read(value+4*i,4));
 			 	}
 			 }
 		}
