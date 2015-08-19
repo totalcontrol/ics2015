@@ -164,9 +164,8 @@ return false;
 int eval(int p,int q)
 {
   int op,val1,val2;
-  printf("p=%d,q=%d\n",p,q);
-		  
-
+  //printf("p=%d,q=%d\n",p,q);
+	
 	if(p > q) {
 		printf("Bad expression");/* Bad expression */
 		return 0;
@@ -205,7 +204,7 @@ int eval(int p,int q)
         /* The expression is surrounded by a matched pair of parentheses. 
          * If that is the case, just throw away the parentheses.
          */
-         printf("pair matched p=%d,q=%d\n",p,q);
+        // printf("pair matched p=%d,q=%d\n",p,q);
         return eval(p + 1, q - 1); 
     }
     else {
@@ -223,7 +222,7 @@ int eval(int p,int q)
 		  	if (rules[i].token_type==tokens[j].type && paircount==0 )
 		  		{
 		  		  op=j;
-				  printf("___opcode=%d__%d\n",tokens[op].type,j);
+				  //printf("___opcode=%d__%d\n",tokens[op].type,j);
 				  j=p+1;
 				  i=NR_REGEX;
 		  		}
@@ -251,6 +250,9 @@ int eval(int p,int q)
 uint32_t expr(char *e, bool *success) {
 	int result=0;
 	
+
+	
+
 		if(!make_token(e)) {
 	   	  panic("please implement me");
 

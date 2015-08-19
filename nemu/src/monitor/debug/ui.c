@@ -84,7 +84,7 @@ static int cmd_display_mem(char *args) {
 }
 
 
-
+//print expression's value
 static int cmd_print_exp(char *args) {
     int number=0;bool bb;
 	number = expr(args,&bb);
