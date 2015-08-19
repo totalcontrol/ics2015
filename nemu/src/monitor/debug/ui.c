@@ -75,7 +75,7 @@ static int cmd_print_mem(char *args) {
 		 	 value=expr(p,&bb);value=(value/4)*4;
 		     for(i=0;i<number;i=i+1)
 			 	{
-			     printf("        Mem[%08X]: [%08X]\n",value+4*i,swaddr_read(value+4*i,4));
+			     printf("        Mem[%08X]=[%08X]\n",value+4*i,swaddr_read(value+4*i,4));
 			 	}
 			 }
 		}
@@ -116,7 +116,7 @@ static int cmd_del_watch(char *args) {
 		 printf("error info format [info r/info w]\n");
 		 return 1;
 		}	
-	int n;
+	uint8_t n;
 	n=atoi(args);
 	if (n>31){
 		printf("no such watch point, number is too big\n");
@@ -128,7 +128,7 @@ static int cmd_del_watch(char *args) {
 	
 }
 
-
+//print register info or watch window
 static int cmd_info(char *args) {
 
 	WP *UsedWP;

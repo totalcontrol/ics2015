@@ -25,21 +25,29 @@ void init_wp_list() {
 
 WP* get_wp_head()
 {
+
 return head;
 }
 
-
+//insert int0 tail of used list
 WP* new_wp()
 {
-  WP* templink;
+  WP* templink,*tail;
+  tail=head;
+  if (tail)
+    {while(tail->next!=NULL) 
+     tail=tail->next;
+      
+    }
   if (free_!=NULL)
   {
     templink=free_->next;
-	free_->next=head;
+	free_->next=NULL;
 	free_->used=1;
-	head=free_;
+    if (tail)
+	 tail->next=free_;
 	free_=templink;
-	return head;
+	return tail->next;
   }
   assert(0);
   return NULL;
