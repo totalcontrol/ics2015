@@ -46,6 +46,7 @@ WP* new_wp()
 	free_->used=1;
     if (tail)
 	 tail->next=free_;
+	else head=free_;
 	free_=templink;
 	return tail->next;
   }
