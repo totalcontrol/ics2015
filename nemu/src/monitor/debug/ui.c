@@ -73,7 +73,7 @@ static int cmd_print_mem(char *args) {
 		 if (p)
 		 	{
 		 	 value=expr(p,&bb);value=(value/4)*4;
-		     //printf("exp=%d,n=%d\n",value,number);
+		     printf("exp=%d,n=%d\n",value,number);
 			 for(i=0;i<number;i=i+1)
 			 	{
 			 	
