@@ -1,6 +1,7 @@
 ##### golbal settings #####
-
-USERPROG := obj/testcase/mov
+#@@ -3,2 +3,32 @@
+#-USERPROG = obj/testcase/mov
+USERPROG = obj/testcase/mov-c
 ENTRY := $(USERPROG)
 
 .PHONY: nemu entry all_testcase kernel run gdb test submit clean
