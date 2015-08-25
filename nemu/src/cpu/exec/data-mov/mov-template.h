@@ -2,12 +2,16 @@
 
 #define instr mov
 
+
+//every instruction have one do_execute function
+//exceute current instruction according opcode, dest,src is ok. 
 static void do_execute() {
 	OPERAND_W(op_dest, op_src->val);
 	print_asm_template2();
 }
 
-make_instr_helper(i2r)
+//function body,call idex(instruction decode and exec)
+make_instr_helper(i2r) 
 make_instr_helper(i2rm)
 make_instr_helper(r2rm)
 make_instr_helper(rm2r)

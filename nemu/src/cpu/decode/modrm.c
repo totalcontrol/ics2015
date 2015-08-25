@@ -1,37 +1,38 @@
 #include "cpu/decode/modrm.h"
 #include "cpu/helper.h"
 
+//get memory addr by  SIB and other information   tiger
 int load_addr(swaddr_t eip, ModR_M *m, Operand *rm) {
 	assert(m->mod != 3);
 
 	int32_t disp;
-	int instr_len, disp_offset, disp_size = 4;
+	int instr_len, disp_offset, disp_size = 4;  //default is 4 
 	int base_reg = -1, index_reg = -1, scale = 0;
 	swaddr_t addr = 0;
 
-	if(m->R_M == R_ESP) {
+	if(m->R_M == R_ESP) {    // means NEXT byte is SIB information
 		SIB s;
-		s.val = instr_fetch(eip + 1, 1);
+		s.val = instr_fetch(eip + 1, 1);  //+1 means SIB +2 means displacement
 		base_reg = s.base;
-		disp_offset = 2;
+		disp_offset = 2;  //displacement offset by eip, +2
 		scale = s.ss;
 
-		if(s.index != R_ESP) { index_reg = s.index; }
+		if(s.index != R_ESP) { index_reg = s.index; }  //no meaning if ==R_ESP
 	}
 	else {
 		/* no SIB */
-		base_reg = m->R_M;
+		base_reg = m->R_M;   //
 		disp_offset = 1;
 	}
 
-	if(m->mod == 0) {
-		if(base_reg == R_EBP) { base_reg = -1; }
-		else { disp_size = 0; }
+	if(m->mod == 0) {   //reg indirect addressing   operator=[Reg[R_M]]
+		if(base_reg == R_EBP) { base_reg = -1; }   //address=disp32
+		else { disp_size = 0; }   //no displacment   reg indirect
 	}
-	else if(m->mod == 1) { disp_size = 1; }
+	else if(m->mod == 1) { disp_size = 1; }  //displacement size is 1 byte
 
 	instr_len = disp_offset;
-	if(disp_size != 0) {
+	if(disp_size != 0) {  //read displacement from memory
 		/* has disp */
 		disp = instr_fetch(eip + disp_offset, disp_size);
 		if(disp_size == 1) { disp = (int8_t)disp; }
@@ -47,7 +48,7 @@ int load_addr(swaddr_t eip, ModR_M *m, Operand *rm) {
 	if(index_reg != -1) {
 		addr += reg_l(index_reg) << scale;
 	}
-
+    //caculate addr=displacement+reg[base]+reg[index]*scale
 #ifdef DEBUG
 	char disp_buf[16];
 	char base_buf[8];
@@ -89,9 +90,9 @@ int read_ModR_M(swaddr_t eip, Operand *rm, Operand *reg) {
 	reg->type = OP_TYPE_REG;
 	reg->reg = m.reg;
 
-	if(m.mod == 3) {
+	if(m.mod == 3) {      //operator=Reg[r/m]   tiger
 		rm->type = OP_TYPE_REG;
-		rm->reg = m.R_M;
+		rm->reg = m.R_M;   //dismatch 3bits and 32bits tiger???
 		switch(rm->size) {
 			case 1: rm->val = reg_b(m.R_M); break;
 			case 2: rm->val = reg_w(m.R_M); break;
@@ -108,8 +109,8 @@ int read_ModR_M(swaddr_t eip, Operand *rm, Operand *reg) {
 		return 1;
 	}
 	else {
-		int instr_len = load_addr(eip, &m, rm);
-		rm->val = swaddr_read(rm->addr, rm->size);
+		int instr_len = load_addr(eip, &m, rm);  //get mem address
+		rm->val = swaddr_read(rm->addr, rm->size);//get operator
 		return instr_len;
 	}
 }

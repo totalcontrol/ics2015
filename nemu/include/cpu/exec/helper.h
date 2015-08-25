@@ -11,6 +11,9 @@
 
 #define do_execute concat4(do_, instr, _, SUFFIX)
 
+//instr is prefix of instruction ,for example,  MOV,NOT,SUB, 
+//make_instr_helper declaration the function in optiontable                   tiger
+//two helper is not easy to understand, change to 1 helper  
 #define make_instr_helper(type) \
 	make_helper(concat5(instr, _, type, _, SUFFIX)) { \
 		return idex(eip, concat4(decode_, type, _, SUFFIX), do_execute); \

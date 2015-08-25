@@ -8,6 +8,8 @@
 #define decode_a concat(decode_a_, SUFFIX)
 #define decode_r2rm concat(decode_r2rm_, SUFFIX)
 
+//decode 's task is to get operator,not decode instruction  , opcodetabole decode opcode  tiger 
+
 /* Ib, Iv */
 make_helper(concat(decode_i_, SUFFIX)) {
 	/* eip here is pointing to the immediate */
@@ -56,6 +58,7 @@ static int concat(decode_a_, SUFFIX) (swaddr_t eip, Operand *op) {
 }
 
 /* eXX: eAX, eCX, eDX, eBX, eSP, eBP, eSI, eDI */
+//LSB of opcode is reg #  add by tiger   
 static int concat3(decode_r_, SUFFIX, _internal) (swaddr_t eip, Operand *op) {
 	op->type = OP_TYPE_REG;
 	op->reg = ops_decoded.opcode & 0x7;
@@ -66,7 +69,7 @@ static int concat3(decode_r_, SUFFIX, _internal) (swaddr_t eip, Operand *op) {
 #endif
 	return 0;
 }
-
+//read MODR_M/SIB information 
 static int concat3(decode_rm_, SUFFIX, _internal) (swaddr_t eip, Operand *rm, Operand *reg) {
 	rm->size = DATA_BYTE;
 	int len = read_ModR_M(eip, rm, reg);
@@ -179,6 +182,7 @@ make_helper(concat(decode_rm_imm_, SUFFIX)) {
 	return len;
 }
 
+//move instruction , different data_type have different function.
 void concat(write_operand_, SUFFIX) (Operand *op, DATA_TYPE src) {
 	if(op->type == OP_TYPE_REG) { REG(op->reg) = src; }
 	else if(op->type == OP_TYPE_MEM) { swaddr_write(op->addr, op->size, src); }

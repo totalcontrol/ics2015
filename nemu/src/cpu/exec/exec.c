@@ -97,7 +97,7 @@ helper_fun opcode_table [256] = {
 /* 0x00 */	inv, inv, inv, inv,
 /* 0x04 */	inv, inv, inv, inv,
 /* 0x08 */	inv, inv, inv, inv,
-/* 0x0c */	inv, inv, inv, _2byte_esc,
+/* 0x0c */	inv, inv, inv, _2byte_esc,  // 0x0f meas 2 bytes opcode 
 /* 0x10 */	inv, inv, inv, inv,
 /* 0x14 */	inv, inv, inv, inv,
 /* 0x18 */	inv, inv, inv, inv,
@@ -119,7 +119,7 @@ helper_fun opcode_table [256] = {
 /* 0x58 */	inv, inv, inv, inv,
 /* 0x5c */	inv, inv, inv, inv,
 /* 0x60 */	inv, inv, inv, inv,
-/* 0x64 */	inv, inv, data_size, inv,
+/* 0x64 */	inv, inv, data_size, inv,  //66 means change data size add by tiger
 /* 0x68 */	inv, inv, inv, inv,
 /* 0x6c */	inv, inv, inv, inv,
 /* 0x70 */	inv, inv, inv, inv,
@@ -227,9 +227,13 @@ helper_fun _2byte_opcode_table [256] = {
 /* 0xfc */	inv, inv, inv, inv
 };
 
+// make_helper macro   means  function header   // add by tiger 
+
+//int exec(swaddr_t eip)
+
 make_helper(exec) {
-	ops_decoded.opcode = instr_fetch(eip, 1);
-	return opcode_table[ ops_decoded.opcode ](eip);
+	ops_decoded.opcode = instr_fetch(eip, 1);  //fetch one byte for opcode,may be prefix or opcode
+	return opcode_table[ ops_decoded.opcode ](eip);  //return real length of instruction
 }
 
 static make_helper(_2byte_esc) {
