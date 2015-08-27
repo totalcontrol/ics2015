@@ -3,7 +3,14 @@
 #define instr sub
 
 static void do_execute () {
-	DATA_TYPE result = op_dest->val - op_src->val;
+	DATA_TYPE result,dest,src;
+	dest= op_dest->val;   //val is always 32bits, so we must change format;
+	src = op_src->val;
+	result= dest-src;
+    result=(DATA_TYPE)0xffff; 
+	cpu.ZF=(result==0)?1:0; 
+	cpu.SF=((result>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
+	
 	OPERAND_W(op_dest, result);
 
 	/* TODO: Update EFLAGS. */

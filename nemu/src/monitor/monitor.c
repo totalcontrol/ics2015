@@ -86,9 +86,8 @@ void restart() {
 
 	/* Set the initial instruction pointer. */
 	cpu.eip = ENTRY_START;
-	cpu.EFLAGS=0x03;  //add by tiger
-	//cpu.CF=1;
-	printf("EFLAGS=%x_%d",cpu.EFLAGS,cpu.CF);
+	cpu.EFLAGS=0x02;  //add by tiger
+	//printf("EFLAGS=%x_%d",cpu.EFLAGS,cpu.CF);
 	
 
 	/* Initialize DRAM. */
