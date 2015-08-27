@@ -7,7 +7,7 @@ static void do_execute () {
 	dest= op_dest->val;   //val is always 32bits, so we must change format;
 	src = op_src->val;
 	result= dest-src;
-    result=(DATA_TYPE)0xffff; 
+    result=(DATA_TYPE)0x0; 
 	cpu.ZF=(result==0)?1:0; 
 	cpu.SF=((result>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
 	cpu.OL=1;
