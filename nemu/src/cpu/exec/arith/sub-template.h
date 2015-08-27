@@ -10,6 +10,7 @@ static void do_execute () {
     result=(DATA_TYPE)0xffff; 
 	cpu.ZF=(result==0)?1:0; 
 	cpu.SF=((result>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
+	cpu.OL=1;
 	
 	OPERAND_W(op_dest, result);
 
