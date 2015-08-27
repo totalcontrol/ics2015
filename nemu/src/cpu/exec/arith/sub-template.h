@@ -7,6 +7,9 @@
 static void do_execute () {
 	DATA_TYPE result,dest,src,mask8,mask4;
 	uint8_t lsb8bits;
+    uint8_t srcMsb,destMsb,resultMsb;
+  //  uint64_t dest64,src64;
+
 	
 	mask8= (DATA_TYPE)0x00000FF;
 	mask4= (DATA_TYPE)0x000000F;
@@ -14,21 +17,26 @@ static void do_execute () {
 	
 	dest= op_dest->val;   //val is always 32bits, so we must change format;
 	src = op_src->val;
-	dest=8;
-	src=7;
+     
 	result= dest-src;
-
 	lsb8bits=(uint8_t)(result&mask8);
+
+	srcMsb=((src>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;
+	destMsb=((dest>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;	
+	resultMsb=((result>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;
+	
 
 	result=(DATA_TYPE)0xFFFFFFF; 
 	lsb8bits=0xf1;
+    cpu.OF=(((~srcMsb&destMsb&resultMsb)|(srcMsb&~destMsb&~resultMsb))==1)?1:0;
+	cpu.CF=(dest<src)?1:0;
 	cpu.ZF=(result==0)?1:0;   //test ok
 	//printf("DATA_TYPE__%d\n",sizeof(DATA_TYPE));
-	cpu.SF=((result>>(sizeof(DATA_TYPE)*8-1))==0)?1:0; //test ok
-    cpu.AF=(((dest&mask4)+(src&mask4))>mask4)?1:0;  // dec overflow, bcd compute	cpu.PF=()
+	cpu.SF=(resultMsb==1)?1:0; //test ok
+    cpu.AF=(((dest&mask4)-(src&mask4))>mask4)?1:0;  // dec overflow, bcd compute	cpu.PF=()
 
     cpu.PF=(true==checkevenparity(lsb8bits))?1:0;  //test ok
-	assert(cpu.AF==0);
+	//assert(cpu.AF==0);
 	OPERAND_W(op_dest, result);
 
 	/* TODO: Update EFLAGS. */
