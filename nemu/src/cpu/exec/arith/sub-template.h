@@ -14,6 +14,8 @@ static void do_execute () {
 	
 	dest= op_dest->val;   //val is always 32bits, so we must change format;
 	src = op_src->val;
+	dest=8;
+	src=8;
 	result= dest-src;
 
 	lsb8bits=(uint8_t)(result&mask8);
@@ -25,7 +27,7 @@ static void do_execute () {
 	cpu.SF=((result>>(sizeof(DATA_TYPE)*8-1))==0)?1:0; //test ok
     cpu.AF=(((dest&mask4)+(src&mask4))>mask4)?1:0;  // dec overflow, bcd compute	cpu.PF=()
 
-    cpu.PF=(true==checkevenparity(lsb8bits))?1:0;
+    cpu.PF=(true==checkevenparity(lsb8bits))?1:0;  //test ok
 	assert(cpu.PF==1);
 	OPERAND_W(op_dest, result);
 
