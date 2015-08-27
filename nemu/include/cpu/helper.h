@@ -19,7 +19,7 @@ static inline int idex(swaddr_t eip, int (*decode)(swaddr_t), void (*execute) (v
 	return len + 1;	// "1" for opcode
 }
 
-//add by tiger
+//add by tiger  ok
 static inline bool checkevenparity(uint8_t x)
 {
   bool even=true;
