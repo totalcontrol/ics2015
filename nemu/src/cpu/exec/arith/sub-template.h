@@ -19,7 +19,7 @@ static void do_execute () {
 	lsb8bits=(uint8_t)(result&mask8);
 
 	result=(DATA_TYPE)0xFFFFFFF; 
-	lsb8bits=0xff;
+	lsb8bits=0xf1;
 	cpu.ZF=(result==0)?1:0;   //test ok
 	//printf("DATA_TYPE__%d\n",sizeof(DATA_TYPE));
 	cpu.SF=((result>>(sizeof(DATA_TYPE)*8-1))==0)?1:0; //test ok
