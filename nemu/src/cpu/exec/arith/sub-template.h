@@ -17,8 +17,8 @@ static void do_execute () {
 	
 	dest= op_dest->val;   //val is always 32bits, so we must change format;
 	src = op_src->val;
-    dest=0x7f;
-	src=0xff;
+    dest=(DATA_TYPE)0x7fffffff;
+	src=(DATA_TYPE)0xffffffff;
 	result= dest-src;
 	lsb8bits=(uint8_t)(result&mask8);
 printf("DATA_TYPE__%d\n",sizeof(DATA_TYPE));
