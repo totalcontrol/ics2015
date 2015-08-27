@@ -14,9 +14,22 @@ static inline uint32_t instr_fetch(swaddr_t addr, size_t len) {
 /* Instruction Decode and EXecute */
 static inline int idex(swaddr_t eip, int (*decode)(swaddr_t), void (*execute) (void)) {
 	/* eip is pointing to the opcode */
-	int len = decode(eip + 1);
+	int len = decode(eip + 1);   //fetch operator ,get dest and src
 	execute();
 	return len + 1;	// "1" for opcode
+}
+
+//add by tiger
+static inline bool checkevenparity(uint8_t x)
+{
+  bool even=true;
+  while (x)
+  	{
+  	  even=(x&1)?false:true;
+	  x=x>>1;
+  	}
+  return even;
+  	
 }
 
 /* shared by all helper function */
