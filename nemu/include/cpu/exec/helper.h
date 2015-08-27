@@ -1,8 +1,8 @@
 #ifndef __EXEC_HELPER_H__
 #define __EXEC_HELPER_H__
 
-#include "cpu/helper.h"
-#include "cpu/decode/decode.h"
+#include "/home/stan/ics2015/nemu/include/cpu/helper.h"
+#include "/home/stan/ics2015/nemu/include/cpu/decode/decode.h"
 
 #define make_helper_v(name) \
 	make_helper(concat(name, _v)) { \
