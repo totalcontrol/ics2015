@@ -88,7 +88,7 @@ void restart() {
 	cpu.eip = ENTRY_START;
 	cpu.EFLAGS=0x02;  //add by tiger
 	cpu.CF=1;
-	printf("EFLAGS=%x_%d",cpu.EFLAGS,cpu.OF);
+	printf("EFLAGS=%x_%d",cpu.EFLAGS,cpu.CF);
 	
 
 	/* Initialize DRAM. */
