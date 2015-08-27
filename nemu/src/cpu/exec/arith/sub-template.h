@@ -17,18 +17,19 @@ static void do_execute () {
 	
 	dest= op_dest->val;   //val is always 32bits, so we must change format;
 	src = op_src->val;
-     
+    dest=0x7f;
+	src=0xff;
 	result= dest-src;
 	lsb8bits=(uint8_t)(result&mask8);
 
 	srcMsb=((src>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;
 	destMsb=((dest>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;	
 	resultMsb=((result>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;
-	
-
-	result=(DATA_TYPE)0xFFFFFFF; 
-	lsb8bits=0xf1;
-    cpu.OF=(((~srcMsb&destMsb&resultMsb)|(srcMsb&~destMsb&~resultMsb))==1)?1:0;
+    assert(srcMsb==1);
+	assert(destMsb==0);
+		assert(resultMsb==1);
+    cpu.OF=(((~destMsb&srcMsb&resultMsb)|(destMsb&~srcMsb&~resultMsb))==1)?1:0;
+	assert(cpu.OF==1);
 	cpu.CF=(dest<src)?1:0;
 	cpu.ZF=(result==0)?1:0;   //test ok
 	//printf("DATA_TYPE__%d\n",sizeof(DATA_TYPE));
