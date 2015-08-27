@@ -26,6 +26,7 @@ static void do_execute () {
     cpu.AF=(((dest&mask4)+(src&mask4))>mask4)?1:0;  // dec overflow, bcd compute	cpu.PF=()
 
     cpu.PF=(true==checkevenparity(lsb8bits))?1:0;
+	assert(cpu.PF==1);
 	OPERAND_W(op_dest, result);
 
 	/* TODO: Update EFLAGS. */
