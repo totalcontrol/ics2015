@@ -33,26 +33,26 @@ union
 		{
 	struct
 		{
-		 int :8;
-		 int :6;
-		 int VM:1; 
-		 int RF:1;
-		 int RES1:1;
-		 int NT:1;
-		 int IP:1;
-		 int OL:1;
-		 int OF:1;
-		 int DF:1;
-		 int IF:1;
-		 int TF:1;
-		 int SF:1;
-		 int ZF:1;
-		 int RES2:1;
-		 int AF:1;
-		 int RES3:1;
-		 int PF:1;
-		 int RES4:1;
-		 int CF:1;
+		 unsigned :8;
+		 unsigned :6;
+		 unsigned VM:1; 
+		 unsigned RF:1;
+		 unsigned RES1:1;
+		 unsigned NT:1;
+		 unsigned IP:1;
+		 unsigned OL:1;
+		 unsigned OF:1;
+		 unsigned DF:1;
+		 unsigned IF:1;
+		 unsigned TF:1;
+		 unsigned SF:1;
+		 unsigned ZF:1;
+		 unsigned RES2:1;
+		 unsigned AF:1;
+		 unsigned RES3:1;
+		 unsigned PF:1;
+		 unsigned RES4:1;
+		 unsigned CF:1;
 		};
 	   uint32_t EFLAGS;
 	} ;
