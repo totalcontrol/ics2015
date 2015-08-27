@@ -86,7 +86,7 @@ void restart() {
 
 	/* Set the initial instruction pointer. */
 	cpu.eip = ENTRY_START;
-	cpu.EFLAGS=0x03;  //add by tiger
+	cpu.EFLAGS=0xFFF3;  //add by tiger
 	printf("EFLAGS=%x_%d",cpu.EFLAGS,cpu.CF);
 	
 
