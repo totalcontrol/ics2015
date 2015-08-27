@@ -27,7 +27,7 @@ static inline bool checkevenparity(uint8_t x)
   while (x)
   	{
   	  even=(x&1)?false:true;
-	  printf("x=%8x___i=%d\n",x,i++);
+	  printf("x=%8x___i=%d___even=%d\n",x,i++,even);
 
 	  x=x>>1;
   	}
