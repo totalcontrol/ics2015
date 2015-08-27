@@ -33,8 +33,9 @@ make_helper(concat(decode_si_, SUFFIX)) {
 	 * it to op_src->simm.
 	 *
 	op_src->simm = ???
-	 */
-	panic("please implement me");
+	 */   
+	op_src->simm = instr_fetch(eip, 1);  //add by tiger
+	//panic("please implement me");
 
 	op_src->val = op_src->simm;
 
