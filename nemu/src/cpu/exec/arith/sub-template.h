@@ -22,12 +22,12 @@ static void do_execute () {
 	result= dest-src;
 	lsb8bits=(uint8_t)(result&mask8);
 
-	srcMsb=((src>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;
-	destMsb=((dest>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;	
-	resultMsb=((result>>(sizeof(DATA_TYPE)*8-1))==0)?1:0;
+	srcMsb=((src>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
+	destMsb=((dest>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;	
+	resultMsb=((result>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
     assert(srcMsb==1);
 	assert(destMsb==0);
-		assert(resultMsb==1);
+	assert(resultMsb==1);
     cpu.OF=(((~destMsb&srcMsb&resultMsb)|(destMsb&~srcMsb&~resultMsb))==1)?1:0;
 	assert(cpu.OF==1);
 	cpu.CF=(dest<src)?1:0;
