@@ -29,10 +29,13 @@ union
 	struct{uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;};
 };
 	swaddr_t eip;
+	union
+		{
 	struct
 		{
-		 int :16;
-		 int VM:1;
+		 int :8;
+		 int :6;
+		 int VM:1; 
 		 int RF:1;
 		 int RES1:1;
 		 int NT:1;
@@ -51,6 +54,8 @@ union
 		 int RES4:1;
 		 int CF:1;
 		};
+	   uint32_t EFLAGS;
+	} ;
 
 } CPU_state;
 
