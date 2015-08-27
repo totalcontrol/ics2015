@@ -21,6 +21,7 @@ static void do_execute () {
 	src=0xff;
 	result= dest-src;
 	lsb8bits=(uint8_t)(result&mask8);
+printf("DATA_TYPE__%d\n",sizeof(DATA_TYPE));
 
 	srcMsb=((src>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
 	destMsb=((dest>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;	
