@@ -7,7 +7,7 @@ $(nemu_BIN): $(nemu_OBJS)
 	$(call make_command, $(CC), $(nemu_LDFLAGS), ld $@, $^)
 	$(call git_commit, "compile NEMU")
 
-PP_FILES := $(filter nemu/src/cpu/exec/%.c, $(nemu_CFILES))
+PP_FILES := $(filter nemu/src/cpu/%.c, $(nemu_CFILES))
 PP_TARGET := $(PP_FILES:.c=.i)
 
 $(PP_TARGET): %.i: %.c
