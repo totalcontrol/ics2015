@@ -11,7 +11,7 @@ static void do_execute () {
 	/* TODO: Update EFLAGS. */
 		//panic("please implement me");
 
-	/*lsb8bits=(uint8_t)(result&mask8);
+	/*lsb8bits=(uint8_t)(rest&mask8);
 	//compute signed bits
 	srcMsb=((src>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;
 	destMsb=((dest>>(sizeof(DATA_TYPE)*8-1))==0)?0:1;	
@@ -34,7 +34,7 @@ static void do_execute () {
 //function body,call idex(instruction decode and exec)
 //make_instr_helper macro will generate 3 functions 
 //sub_i2a_b sub_i2a_w sub_i2a_l
-//make_instr_helper(i) 
+make_instr_helper(i) 
 make_instr_helper(r) 
 
 
