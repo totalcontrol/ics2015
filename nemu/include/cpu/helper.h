@@ -23,11 +23,11 @@ static inline int idex(swaddr_t eip, int (*decode)(swaddr_t), void (*execute) (v
 static inline bool checkevenparity(uint8_t x)
 {
   bool even=true;
-   int i=0;
+ //  int i=0;
   while (x)
   	{
   	   if (x&1) even=!even;
-	  printf("x=%8x___i=%d___even=%d\n",x,i++,even);
+	  // printf("x=%8x___i=%d___even=%d\n",x,i++,even);
 
 	  x=x>>1;
   	}

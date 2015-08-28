@@ -14,6 +14,8 @@ static void do_execute () {
 	
 	dest= op_dest->val;   //val is always 32bits, so we must change format;
 	src = op_src->val;
+
+	printf("dest=%x  src=%x\n",dest,src);
     result= dest-src;
 	OPERAND_W(op_dest, result);
 	
