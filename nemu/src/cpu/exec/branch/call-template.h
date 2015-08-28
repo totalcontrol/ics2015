@@ -6,7 +6,7 @@ static void do_execute () {
 	//DATA_TYPE result,dest,src,mask8,mask4;
 	cpu.esp=cpu.esp-4;   //push eip
 	swaddr_write(cpu.esp,4,cpu.eip);  //push eip
-    cpu.eip=op_src->val;    //change eip ,jump to the branch
+    cpu.eip=cpu.eip+op_src->val;    //change eip ,jump to the branch
 
 	
 	/* TODO: Update EFLAGS. */
