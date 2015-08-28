@@ -4,10 +4,10 @@
 
 static void do_execute () {
 	//DATA_TYPE result,dest,src,mask8,mask4;
-	cpu.esp=cpu.esp-4;   //push eip
-	swaddr_write(cpu.esp,4,cpu.eip);  //push eip
-    cpu.eip=cpu.eip+op_src->val;    //change eip ,jump to the branch
-
+	
+	cpu.esp=cpu.esp-sizeof(DATA_BYTE);   //move esp
+	swaddr_write(cpu.esp,4,op_src->val);  //push 
+   
 	
 	/* TODO: Update EFLAGS. */
 		//panic("please implement me");
@@ -28,7 +28,7 @@ static void do_execute () {
 	//assert(cpu.AF==0);*/
 
 	print_asm_template1(); 
-	printf("call %x \n",cpu.eip);
+	printf("push %x \n",op_src->val);
 }
 
 
