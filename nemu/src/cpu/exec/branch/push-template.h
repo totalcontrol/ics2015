@@ -35,7 +35,7 @@ static void do_execute () {
 //function body,call idex(instruction decode and exec)
 //make_instr_helper macro will generate 3 functions 
 //sub_i2a_b sub_i2a_w sub_i2a_l
-//make_instr_helper(i) 
+make_instr_helper(i) 
 make_instr_helper(r) 
 
 
