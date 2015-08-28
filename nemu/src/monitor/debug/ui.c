@@ -173,6 +173,8 @@ static int cmd_info(char *args) {
 			printf("        EDI = %08X\n",cpu.edi);
 			printf("\n        EIP = %08X\n",cpu.eip);
 			printf("\n        EFLAGS = %08X\n",cpu.EFLAGS);
+			printf("\n        OF=%01x  CF=%01x  SF=%01x  ZF=%01x  PF=%01x IF=%01x DF=%01x \n",cpu.OF,cpu.CF,cpu.SF,cpu.ZF,cpu.PF,cpu.IF,cpu.DF);
+			
 		    return 1;
 		 }
 	 
