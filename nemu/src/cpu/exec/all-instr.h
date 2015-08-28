@@ -14,6 +14,8 @@
 #include "arith/test.h"   //add by tiger
 
 #include "branch/call.h"   //add by tiger
+#include "branch/jcc.h"   //add by tiger
+
 #include "branch/push.h"   //add by tiger
 #include "branch/pop.h"   //add by tiger
 
