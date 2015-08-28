@@ -12,6 +12,7 @@
 #include "arith/div.h"
 #include "arith/sub.h"   //add by tiger
 #include "arith/test.h"   //add by tiger
+#include "arith/cmp.h"   //add by tiger
 
 #include "branch/call.h"   //add by tiger
 #include "branch/jcc.h"   //add by tiger
