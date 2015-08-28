@@ -1,13 +1,12 @@
 #include "cpu/exec/template-start.h"
 
-#define instr push
+#define instr pop
 
 static void do_execute () {
 	//DATA_TYPE result,dest,src,mask8,mask4;
 	
-	cpu.esp=cpu.esp-sizeof(DATA_BYTE);   //move esp
-	swaddr_write(cpu.esp,4,op_src->val);  //push 
-   
+	op_dest->val=swaddr_read(cpu.esp,4);  //pop 
+	cpu.esp=cpu.esp+sizeof(DATA_BYTE);   //move esp
 	
 	/* TODO: Update EFLAGS. */
 		//panic("please implement me");
@@ -28,7 +27,7 @@ static void do_execute () {
 	//assert(cpu.AF==0);*/
 
 	print_asm_template1(); 
-	printf("push %x \n",op_src->val);
+	printf("pop %x \n",op_src->val);
 }
 
 
@@ -39,9 +38,6 @@ static void do_execute () {
 make_instr_helper(r) 
 
 
-//make_instr_helper(i2rm)
-//make_instr_helper(r2rm)
-//make_instr_helper(rm2r)
 
 //no byte instruction ,only word and 4 bytes
 #if DATA_BYTE == 4
