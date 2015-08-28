@@ -5,7 +5,7 @@
 static void do_execute () {
 	//DATA_TYPE result,dest,src,mask8,mask4;
 	if (cpu.ZF==1)
-     cpu.eip=cpu.eip+op_src->val;    //change eip ,jump to the branch
+     cpu.eip=cpu.eip+(int)op_src->val;    //change eip ,jump to the branch
 
 	
 	/* TODO: Update EFLAGS. */
